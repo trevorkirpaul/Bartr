@@ -1,0 +1,53 @@
+/* 
+COLORS:
+
+black: #383838
+white: #F1F5F7
+grayBlue: #8D99AE
+red: #EF233C
+lightBlue: #36C9C6
+
+*/
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+header {
+  background: #383838;
+  color: #F1F5F7;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  padding: 15px;
+
+}
+
+header div,nav {
+  flex: 1;
+}
+
+header .headerLogo span {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+
+
+header .login {
+  text-align: right;
+  padding: 2px;
+  
+} 
+
+header div a, nav a {
+  color: #F1F5F7;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  padding: 5px 10px;
+}
+
+header div .is-active, nav .is-active {
+  color: #36C9C6;
+  
+}

@@ -1,0 +1,57 @@
+/* 
+COLORS:
+
+black: #383838
+white: #F1F5F7
+grayBlue: #8D99AE
+red: #EF233C
+
+*/
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+.formWrapper {
+  margin: 25px 0;
+  padding: 25px;
+  display: flex;
+}
+
+.formWrapper div {
+  flex: 2;
+}
+
+.formWrapper .formButton {
+  flex: 1;
+  text-align: center;
+}
+
+.formWrapper div span {
+  color: #383838;
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.formWrapper div input {
+  color: #383838;
+  display: inline-block;
+  height: 30px;
+  padding: 5px;
+  width: 90%;
+}
+
+.formWrapper .formButton button {
+  border: none;
+  background: #383838;
+  color: #F1F5F7;
+  cursor: pointer;
+  display: inline-block;
+  height: 45px;
+  margin-top: 22px;
+  padding: 5px;
+  width: 90%;
+}
