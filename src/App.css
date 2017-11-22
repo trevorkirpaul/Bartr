@@ -1,0 +1,293 @@
+/* 
+COLORS:
+
+black: #383838
+white: #F1F5F7
+grayBlue: #8D99AE
+red: #EF233C
+lightBlue: #36C9C6
+
+*/
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* 
+  HEADER COMPONENT
+*/
+
+header {
+  background: #383838;
+  color: #F1F5F7;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  padding: 15px;
+
+}
+
+header div,nav {
+  flex: 1;
+}
+
+header .headerLogo span {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+header .login {
+  text-align: right;
+  padding: 2px;  
+} 
+
+header div a, nav a {
+  color: #F1F5F7;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  padding: 5px 10px;
+}
+
+header div .is-active, nav .is-active {
+  color: #36C9C6;  
+}
+
+/* 
+    SUPER SEARCH COMPONENT
+*/
+
+.formWrapper {
+  max-width: 900px;
+  margin: 15px auto;
+  padding: 25px;
+  display: flex;
+}
+
+.formWrapper div {
+  flex: 2;
+}
+
+.formWrapper .formButton {
+  flex: 1;
+  text-align: center;
+}
+
+.formWrapper div span {
+  color: #383838;
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.formWrapper div input {
+  color: #383838;
+  display: inline-block;
+  height: 45px;
+  padding: 5px;
+  width: 95%;
+}
+
+.formWrapper .formButton button {
+  border: none;
+  background: #383838;
+  color: #F1F5F7;
+  cursor: pointer;
+  display: inline-block;
+  height: 45px;
+  margin-top: 22px;
+  padding: 5px;
+  width: 95%;
+}
+
+/* 
+  SELL COMPONENT
+*/
+
+.sellWrapper {
+  max-width: 900px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sellWrapper .sellTitle {
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
+}
+
+.sellWrapper .sellTitle h1 {
+  font-weight: 700;
+  font-size: 3em;
+  margin: 15px 0;
+}
+
+.sellWrapper .sellTitle h2 {
+  font-weight: 300;
+  font-size: 1.5em;
+  margin: 25px 0;
+  /* max-width: 400px; */
+}
+
+.sellForm .sellForm__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  /* background: #8D99AE; */
+}
+
+.sellForm .sellForm__form div {
+  margin: 15px 0;
+}
+
+.sellForm .sellForm__form div input {
+  display: inline-block;
+  height: 30px;
+  width: 100%;
+  padding: 5px;
+}
+
+.sellForm .sellForm__form div textarea {
+  display: inline-block;
+  width: 100%;
+  resize: none;
+  height: 300px;
+  padding: 5px;
+}
+
+.sellForm .sellForm__form div button {
+  display: inline-block;
+  border: none;
+  background: #383838;
+  color: #F1F5F7;
+  height: 30px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* 
+  BUY PAGE COMPONENT
+*/
+
+.BuyPageTitle {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
+}
+
+.BuyPageTitle h1 {
+  font-weight: 700;
+  font-size: 3em;
+}
+
+.BuyPageTitle h2 {
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.BuyListWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.BuyListItem {
+  width: 100%;
+  margin: 10px;
+}
+
+.BuyListItem {
+  background: #383838;
+}
+
+.BuyListItem .titleWrapper {
+  padding: 15px;
+  background: #383838;
+  color: #F1F5F7;
+  /* margin-bottom: 10px; */
+  display: flex;
+}
+
+.BuyListItem .titleWrapper h3 {
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  /* margin-bottom: 8px; */
+  flex: 1;
+}
+
+.BuyListItem .titleWrapper p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  flex: 1;
+  text-align: right;
+}
+
+.BuyListItem .titleWrapper p::before {
+  content: 'Price: ';
+  font-weight: 300;
+}
+
+.BuyListItem .desWrapper {
+  padding: 15px;
+  background: #383838;
+  margin-bottom: 10px;
+}
+
+.BuyListItem .desWrapper p {
+  font-family: 'Roboto', sans-serif;
+  color: #F1F5F7;
+  line-height: 25px; 
+}
+
+.BuyListItem .actionWrapper {
+  background: #383838;
+  color: #F1F5F7;
+  padding: 5px 15px;
+}
+
+.BuyListItem .actionWrapper a {
+  color: #36C9C6;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+/* 
+  BUYVIEWMORE COMPONENT
+*/
+
+.viewMoreWrapper {
+  max-width: 900px;
+  margin: 15px auto;
+}
+
+.viewMoreWrapper .itemInfo {
+  font-family: 'Robot', sans-serif;
+  color: #383838;
+  margin-bottom: 25px;
+}
+
+.viewMoreWrapper .itemInfo h1 {
+  font-family: 'Robot', sans-serif;
+  font-weight: 400;
+  font-size: 2.5em;
+}
+
+.viewMoreWrapper .itemInfo h3 {
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.viewMoreWrapper a {
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+

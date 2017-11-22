@@ -19,10 +19,14 @@ I'm using create-react-app as a boilerplate.
 
 > First upload to github. I've began some initialy frameworking including setting up the redux store and one  action (addItem). I'm currently just displaying the state unfiltered on the buy page. React Router has also been used. Basic styling has only been added to the header and the 'SuperSearch' component.
 
+### November 22, 2017
+
+> The good news is that I don't feel boxed in anymore. I've also set up an express backend with API calls to a local mongoDB that I have set up. It took a long time to get this functioning correctly. The first method I tried was using express generator then cloning my react app into it but I eventually realized that was overkill. I set up an express api server within my crea-react-app project and I'm using `axios` to make http requests whiles inside react. I need to get a better grasp on state management and updating/reading from the db. Currently the app can read and write to the db but once I add delete/edit functionality I'm confident I'll understand when the best times are to update state with db info. It was a lot of hard work today but once the API calls worked it was an amazing feeling. I definitely am happy about the progress so far although I hope to gain a deeper understanding of redux + using a DB soon.
+
 ### Concerns
-1. My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...
+1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~
 2. I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.
-3. Things will get interesting once I get to a point where I want to set up mongodb. I have minimal experience with firebase so I have a nice foundation of understanding for promises. I've never hooked mongodb up to a project but I've had it set up and working on my computer sicne the beginning. That doesn't help much but I understand a little bit about it and I know it's the direction I want to go. If any serious issues arise I'll just use firebase.
+3. Things will get interesting once I get to a point where I want to set up mongodb. ~~I have minimal experience with firebase so I have a nice foundation of understanding for promises. I've never hooked mongodb up to a project but I've had it set up and working on my computer sicne the beginning. That doesn't help much but I understand a little bit about it and I know it's the direction I want to go. If any serious issues arise I'll just use firebase.~~ `update: I hooked up mongoDB using a seperate express server just for API calls. :)`
 
 ## ^-^
 

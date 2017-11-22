@@ -7,6 +7,10 @@ export default (state = itemsReducerDefaultState, action) => {
         ...state,
         action.item
       ];
+    case 'RECIEVE_ALL':
+      return [
+        ...action.data
+      ];
     default:
       return state;
   }

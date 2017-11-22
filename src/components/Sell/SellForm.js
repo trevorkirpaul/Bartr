@@ -41,30 +41,38 @@ export default class SellForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="sellForm__form">
         <form onSubmit={this.onSubmit}>
 
-          <input
-            autoFocus
-            type="text"
-            placeholder="Enter Post Title"
-            value={this.state.title}
-            onChange={this.onTitleChange}
-          />
-          <input
-            type="text"
-            placeholder="Enter Selling Price"
-            value={this.state.price}
-            onChange={this.onPriceChange}
-          />
+          <div>
+            <input
+              autoFocus
+              type="text"
+              placeholder="Enter Post Title"
+              value={this.state.title}
+              onChange={this.onTitleChange}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter Selling Price"
+              value={this.state.price}
+              onChange={this.onPriceChange}
+            />
+          </div>
      
-          <textarea
-            placeholder="Enter a description of your post/item"
-            value={this.state.description}
-            onChange={this.onDescriptionChange}
-          >
-          </textarea>
-          <button>Create Post!</button>
+          <div>
+            <textarea
+              placeholder="Enter a description of your post/item"
+              value={this.state.description}
+              onChange={this.onDescriptionChange}
+            >
+            </textarea>
+          </div>
+          <div>
+            <button>Create Post!</button>
+          </div>
         </form>
       </div>
     );

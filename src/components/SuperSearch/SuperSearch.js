@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './SuperSearch.css';
+
 
 
 export default class SuperSearch extends Component {

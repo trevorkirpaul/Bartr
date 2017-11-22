@@ -18,3 +18,8 @@ export const addItem = (
     price
   }
 });
+
+export const recieveAll = (data) => ({
+  type: 'RECIEVE_ALL',
+  data
+});
