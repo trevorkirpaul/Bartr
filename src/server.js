@@ -8,9 +8,16 @@ const router = express.Router();
 
 const port = 3001;
 
+
+
 // connect mongoose
 
-mongoose.connect('mongodb://localhost:27017/barterDB')
+// mongoose.connect('mongodb://localhost:27017/barterDB');
+
+const promise = mongoose.connect('mongodb://localhost:27017/barterDB', {
+  useMongoClient: true
+});
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -50,15 +57,15 @@ router.route('/items')
     item.description = req.body.description;
     item.price = req.body.price;
 
-    item.save((err) => {
+    item.save((err, item) => {
       if (err)
-      res.send(err);
-      res.json({ message: 'Item added!' });
+      res.send(err, item);
+      res.json({ id: item.id });      
     });
   });
 
 
-// use out router config when we call /api
+// use our router config when we call /api
 app.use('/api', router);
 
 // start server and listen for requests

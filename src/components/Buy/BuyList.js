@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import BuyListItem from './BuyListItem';
 
 export const BuyList = (props) => (
-  <div className="BuyListWrapper">
+  <div className="BuyListWrapper">  
     {
-      props.items.length === 0 ?
-        <h3>No Items</h3>
-        :
-        props.items.map((item) => {
-          return <BuyListItem key={item._id} {...item} />
-        })
+      props.items.map((item) => {
+        return <BuyListItem key={item._id} {...item} />;
+      })
     }
   </div>
 );
