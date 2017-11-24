@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
 
 export default class SellForm extends React.Component {
   constructor(props) {
@@ -6,9 +7,24 @@ export default class SellForm extends React.Component {
     this.state = {
       title: '',
       description: '',
-      price: ''
+      price: '',
+      imagePlaceholder: '',
+      imageUploaded: false
     };
   }
+  // React Dropzone methods
+  onDrop = (acceptedFiles, rejectedFiles) => {
+    console.log(acceptedFiles);
+  }
+  onImageDrop = (files) => {
+    this.setState(() => ({
+      imagePlaceholder: files[0].preview,
+      imageUploaded: true
+    }));
+    console.log(files);
+  }
+
+
   onTitleChange = (e) => {
     const title = e.target.value;
     this.setState(() => ({
@@ -61,7 +77,6 @@ export default class SellForm extends React.Component {
               onChange={this.onPriceChange}
             />
           </div>
-     
           <div>
             <textarea
               placeholder="Enter a description of your post/item"
@@ -70,6 +85,21 @@ export default class SellForm extends React.Component {
             >
             </textarea>
           </div>
+          <div>
+            <Dropzone
+              multiple={false}
+              accept="image/*"
+              onDrop={this.onImageDrop}
+            >
+              <div>Click here to upload an image...</div>
+            </Dropzone>
+          </div>
+          <div>
+            {
+              this.state.imageUploaded === true && <img src={this.state.imagePlaceholder} alt="preview"/>
+            }
+          </div>
+        
           <div>
             <button>Create Post!</button>
           </div>

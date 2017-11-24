@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Item = require('./model/items');
+const Account = require('./model/accounts');
 
 const app = express();
 const router = express.Router();
@@ -23,10 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use((req,res, next) => {
-
+  
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Methods', 'GET<HEAD<OPTIONS<POST<PUT<DELETE');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 
   res.setHeader('Cache-Control', 'no-cache');
@@ -38,6 +39,8 @@ app.use((req,res, next) => {
 router.get('/', (req, res) => {
   res.json({ message: 'APIT Initialized!'});
 });
+
+// Items routes
 
 router.route('/items')
   .get((req, res) => {
@@ -64,6 +67,43 @@ router.route('/items')
     });
   });
 
+router.route('/items/:item_id')
+  // delete item  
+  .delete((req,res) => {
+    Item.remove({
+      _id: req.params.item_id
+    }, (err, item) => {
+      if (err)
+      res.send(err);
+    });    
+  });
+
+// Accounts routes
+router.route('/accounts')
+  .get((req, res) => {
+    Account.find((err, accounts) => {
+      if(err)
+      res.send(err);
+      res.json(accounts)
+    })
+  })
+  .post((req, res) => {
+    const account = new Account();
+    account.firstName = req.body.firstName;
+    account.lastName = req.body.lastName;
+    account.age = req.body.age;
+    account.location = req.body.location;
+    account.email = req.body.email;
+    account.userName = req.body.userName;
+    accounts.passWord = req.body.passWord;
+
+    account.save((err, account) => {
+      if (err)
+      res.send(err, account);
+      res.json({ id: account._id });
+      
+    })
+  });
 
 // use our router config when we call /api
 app.use('/api', router);

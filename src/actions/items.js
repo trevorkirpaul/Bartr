@@ -36,6 +36,22 @@ export const startAddItem = (itemData = {}) => {
 
 };
 
+export const removeItem = (itemId) => ({
+  type: 'DELETE_ITEM',
+  itemId
+});
+
+export const deleteItem = (itemId) => {
+  const urlAPI = 'http://localhost:3001/api/items/' + itemId;
+  axios.delete(urlAPI, itemId)
+    .then(
+      (itemId) => {
+        // dispatch(removeItem(itemId));
+      }
+    )
+    .catch(err => console.err);
+}
+
 export const recieveAll = (data) => ({
   type: 'RECIEVE_ALL',
   data

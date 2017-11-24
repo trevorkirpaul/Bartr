@@ -5,31 +5,25 @@ import configureStore from './store/configureStore';
 import axios from 'axios';
 import './App.css';
 import { recieveAll } from './actions/items';
+import { recieveAccounts } from './actions/accounts';
 
 const store = configureStore();
 const urlAPI = 'http://localhost:3001/api/items';
 
-// store.dispatch(addItem({
-//   title: 'Iphone X',
-//   description: 'An overpriced but beautiful piece of technology! Call anyone but never drop this phone. It breaks easily',
-//   price: 1100
-// }));
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
-    };
-  };
+export default class App extends Component {
+
   componentDidMount() {
     axios.get(urlAPI)
       .then(res => {
         store.dispatch(recieveAll(res.data));
         
-      });     
-    
+      });   
+    axios.get('http://localhost:3001/api/accounts')
+      .then(res => {
+        store.dispatch(recieveAccounts(res.data));
+      })
   }
   render() {
     return (
@@ -44,4 +38,12 @@ class App extends Component {
   }
 }
 
-export default App;
+// const mapStateToProps = (state, props) => ({
+//   accounts: state.accounts
+// })
+
+// const mapDispatchToProps = (dispatch, props) => ({
+//   startRecieveAccounts: () => dispatch(startRecieveAccounts())
+// })
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

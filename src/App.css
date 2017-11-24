@@ -291,3 +291,69 @@ header div .is-active, nav .is-active {
   cursor: pointer;
 }
 
+/* 
+  Create Account Components
+*/
+
+/* CreateAccount.js */
+
+.createAccountWrapper {
+  max-width: 900px;
+  margin: 15px auto;
+  color: #383838;
+}
+
+.createAccountWrapper .createAccountTitle {
+  margin-bottom: 25px;
+}
+
+.createAccountWrapper .createAccountTitle h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+}
+
+.createAccountWrapper .createAccountTitle h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+/* CreateForm.js */
+
+.createFormWrapper .formError {
+  margin-bottom: 15px;
+}
+.createFormWrapper .formError span {
+  color: #EF233C;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+.createFormWrapper form {
+  display: flex;
+  flex-direction: column;
+}
+
+.createFormWrapper form .input {
+  padding: 5px;
+  text-align: left;
+}
+
+.createFormWrapper form .input input {  
+  width: 60%;  
+  padding: 5px;
+}
+
+.createFormWrapper form .formButtonsDiv {
+  padding: 5px;
+}
+
+.createFormWrapper form .formButtonsDiv button {
+  display: inline-block;
+  border: none;
+  padding: 10px;
+  background: #383838;
+  color: #F1F5F7;
+  cursor: pointer;
+}

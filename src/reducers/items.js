@@ -7,6 +7,9 @@ export default (state = itemsReducerDefaultState, action) => {
         ...state,
         action.item
       ];
+    case 'DELETE_ITEM':
+      return state.filter((item) => item._id !== action.itemId);
+      
     case 'RECIEVE_ALL':
       return [
         ...action.data
