@@ -95,7 +95,7 @@ router.route('/accounts')
     account.location = req.body.location;
     account.email = req.body.email;
     account.userName = req.body.userName;
-    accounts.passWord = req.body.passWord;
+    account.passWord = req.body.passWord;
 
     account.save((err, account) => {
       if (err)

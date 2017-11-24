@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 
 export const recieveAccounts = (data) => ({
   type: 'RECIEVE_ALL_ACCOUNTS',
@@ -15,3 +15,39 @@ export const recieveAccounts = (data) => ({
 //     })
 
 // }
+
+// create account
+
+export const createAccount = (account) => ({
+  type: 'CREATE_ACCOUNT',
+  account
+});
+
+export const startCreateAccount = (accountData = {}) => {
+  const urlAPI = 'http://localhost:3001/api/accounts';
+
+  return(dispatch) => {
+    const {
+      firstName = '',
+      lastName = '',
+      age = '',
+      location = '',
+      email = '',
+      userName = '',
+      password = '' 
+    } = accountData;
+
+    const account = { firstName, lastName, age, location, email, userName, password }
+
+    axios.post(urlAPI, account)
+      .then(
+        (response) => {
+          dispatch(createAccount({
+            _id: response.data.id,
+            ...account
+          }))
+        }
+      )
+      .catch(err => console.err);
+  }
+}

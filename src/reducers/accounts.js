@@ -6,6 +6,11 @@ export default ( state = accountsReducerDefaultState, action ) => {
       return [
         ...action.data
       ];
+    case 'CREATE_ACCOUNT':
+      return [
+        ...state,
+        action.account
+      ];
     default:
       return state;
   }
