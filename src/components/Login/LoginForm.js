@@ -21,6 +21,7 @@ export default class LoginForm extends React.Component {
         <form onSubmit={this.onSubmit}>
           <div>
             <input
+              autoFocus
               type="text"
               name="username"
               id="inpUser"

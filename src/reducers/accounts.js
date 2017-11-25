@@ -15,3 +15,6 @@ export default ( state = accountsReducerDefaultState, action ) => {
       return state;
   }
 };
+
+//  I reazlied  I don't want to send the enitre accounts collection client side
+// accounts reducers, actions and the redux store state have been removed

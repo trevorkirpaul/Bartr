@@ -19,8 +19,8 @@ export class Login extends React.Component {
           
           // check response from server then either login or render error elements
 
-          if (response.data === loginData.username) {
-            this.props.setUser(loginData.username);
+          if (response.data.username === loginData.username) {
+            this.props.setUser(response.data);
             this.setState(() => ({
               error: ''
             }));
@@ -57,7 +57,7 @@ export class Login extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (username) => dispatch(setUser(username))
+    setUser: (account) => dispatch(setUser(account))
   };
 }
 

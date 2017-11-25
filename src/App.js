@@ -5,12 +5,10 @@ import configureStore from './store/configureStore';
 import axios from 'axios';
 import './App.css';
 import { recieveAll } from './actions/items';
-import { recieveAccounts } from './actions/accounts';
 
+// TODO move this and axios to items actions
 const store = configureStore();
 const urlAPI = 'http://localhost:3001/api/items';
-
-
 
 export default class App extends Component {
 
@@ -20,10 +18,6 @@ export default class App extends Component {
         store.dispatch(recieveAll(res.data));
         
       });   
-    axios.get('http://localhost:3001/api/accounts')
-      .then(res => {
-        store.dispatch(recieveAccounts(res.data));
-      })
   }
   render() {
     return (

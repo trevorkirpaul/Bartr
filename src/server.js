@@ -92,31 +92,23 @@ router.route('/items/:item_id')
   });
 
 // Accounts routes
-router.route('/accounts')
-  .get((req, res) => {
-    Account.find((err, accounts) => {
-      if(err)
-      res.send(err);
-      res.json(accounts)
+router.route('/account')
+  .post((req, res) => {
+    const username = req.body.username;
+    console.log(username);
+    Account.findOne({ username: username }, (err,obj) => {
+      res.send(
+        {
+          "firstName": obj.firstName,
+          "lastName": obj.lastName,
+          "age": obj.age,
+          "location": obj.location,
+          "email": obj.email,
+          "username": obj.username
+        });
+      // res.send(obj);
     })
   })
-  .post((req, res) => {
-    const account = new Account();
-    account.firstName = req.body.firstName;
-    account.lastName = req.body.lastName;
-    account.age = req.body.age;
-    account.location = req.body.location;
-    account.email = req.body.email;
-    account.username = req.body.username;
-    account.password = req.body.password;
-
-    account.save((err, account) => {
-      if (err)
-      res.send(err, account);
-      res.json({ id: account._id });
-      
-    })
-  });
 
 // routes to login
 
@@ -129,7 +121,7 @@ router.route('/login')
       if (!obj) {
         res.send('no user found');
       } else if (obj) {
-        obj.password === password ? res.send(obj.username) : res.send("incorrect password");
+        obj.password === password ? res.send(obj) : res.send("incorrect password");
       }
     })
     

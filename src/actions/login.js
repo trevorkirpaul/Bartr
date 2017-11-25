@@ -1,4 +1,8 @@
-export const setUser = username => ({
+export const setUser = account => ({
   type: 'LOG_IN',
-  username
+  account
+});
+
+export const setLogOut = (l) => ({
+  type: 'LOG_OUT'
 });

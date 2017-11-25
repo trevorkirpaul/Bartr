@@ -7,6 +7,7 @@ import Buy from '../components/Buy/Buy';
 import BuyViewMore from '../components/Buy/BuyViewMore';
 import Sell from '../components/Sell/Sell';
 import Login from '../components/Login/Login';
+import Profile from '../components/Profile/Profile';
 import NotFound from '../components/NotFound/NotFound';
 
 const AppRouter = () => (
@@ -19,6 +20,7 @@ const AppRouter = () => (
         <Route path="/buy/item/:id" component={BuyViewMore} />
         <Route path="/sell" component={Sell} />
         <Route path="/login" component={Login} />
+        <Route path="/profile" component={Profile} />
         <Route path="/createAccount" component={CreateAccount} />
         <Route component={NotFound}/>
       </Switch>
