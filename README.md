@@ -29,6 +29,12 @@ I'm using create-react-app as a boilerplate.
 
 > I want to work on the app recognizing a logged in user next. I also need to figure out how I'll orginize created items. I'm considering adding a new property to specifiy which user created each item. Then if that user account matches the user logged in I'll permit update/delete functions. I still need to figure out how users will upload images which might be the hardest task yet. As far as time is concerned, I'm pretty happy with my progress! After I implement image uploading I only have to set up the filter functions for the super search component. I don't expect that to be a challenge at all so I'll save it for last.
 
+### November 25th, 2017
+
+> I spent way too much time today trying to figure out why the NavBar component's `active-class` wouldn't update. Fortunately I narrowed it to down and found a solution. I had redux connections on the same level so the component which had the NavBar in it was being passed through connect. I don't know exactly what the issue is but broke away the  account actions from the nav into a new component and connected that instead. It solved the issue perfectly but more importantly I realized I need to focus more on how and why I create components. Realizing these issues is really helping me internalize component structure as in if they should dictate style or execute actions. I read an article on this topic but this ordeal has really jumpstarted my thought process on understanding it better. So now the client side log in system is good enough...for now..
+
+>I also implemented a filter for items. I only filter by text for now but the framework is in place. I still need to work on image uploads for items and for account avatars. I've been doing research on the side and it's making a lot more sense now. At the same time I want to rework the backend for the API. Backend is my weakest understanding but this project alone has greatly increased my knowlegde about it. Overall I'm very satisfied with what I'm learning, my progress and the app so far. 
+
 ### Concerns
 1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~
 2. I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.
