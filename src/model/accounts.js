@@ -7,8 +7,8 @@ const AccountSchema = new Schema({
   age: Number,
   location: String,
   email: String,
-  userName: String,
-  passWord: String 
+  username: String,
+  password: String 
 },{ collection: 'accounts' });
 
 module.exports = mongoose.model('Account', AccountSchema);

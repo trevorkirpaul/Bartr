@@ -120,7 +120,7 @@ header div .is-active, nav .is-active {
 .sellWrapper .sellTitle h1 {
   font-weight: 700;
   font-size: 3em;
-  margin: 15px 0;
+  /* margin: 15px 0; */
 }
 
 .sellWrapper .sellTitle h2 {
@@ -162,8 +162,8 @@ header div .is-active, nav .is-active {
   border: none;
   background: #383838;
   color: #F1F5F7;
-  height: 30px;
-  padding: 5px;
+  
+  padding: 10px;
   cursor: pointer;
 }
 

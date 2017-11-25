@@ -9,7 +9,7 @@ export default class CreateForm extends React.Component {
       age: '',
       location: '',
       email: '',
-      userName: '',
+      username: '',
       password: '',
       error: ''
     }
@@ -44,10 +44,10 @@ export default class CreateForm extends React.Component {
       email
     }));
   }
-  onChangeUserName = (e) => {
-    const userName = e.target.value;
+  onChangeUsername = (e) => {
+    const username = e.target.value;
     this.setState(()=> ({
-      userName
+      username
     }));
   }
   onChangePassword = (e) => {
@@ -92,7 +92,7 @@ export default class CreateForm extends React.Component {
         age: this.state.age,
         location: this.state.location,
         email: this.state.email,
-        userName: this.state.userName,
+        username: this.state.username,
         password: this.state.password
       });
      this.setState(() => ({
@@ -169,8 +169,8 @@ export default class CreateForm extends React.Component {
             <input            
               type="text"
               placeholder="enter a username"
-              value={this.state.userName}
-              onChange={this.onChangeUserName}
+              value={this.state.username}
+              onChange={this.onChangeUsername}
               id="inpUsername"
             />
           </div>

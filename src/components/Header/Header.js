@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
-export default () => (
+export const Header = (props) => (
   <header>
     <div className="headerLogo">
       <span>bartr</span>
@@ -12,9 +13,20 @@ export default () => (
       <NavLink to="/buy" activeClassName="is-active" exact={true}>Buy</NavLink>
       <NavLink to="/sell" activeClassName="is-active" exact={true}>Sell</NavLink>
     </nav>
-    <div className="login">
+    <div className="login">      
+      {props.username && <span>{props.username}</span> }      
       <NavLink to="/login" activeClassName="is-active" exact={true}>Log In</NavLink>
       <NavLink to="/createAccount" activeClassName="is-active" exact={true}>Create Account</NavLink>
+
     </div>
+    
   </header>
 );
+
+const mapStateToProps = state => {
+  return {
+    username: state.login
+  }
+}
+
+export default connect(mapStateToProps)(Header)

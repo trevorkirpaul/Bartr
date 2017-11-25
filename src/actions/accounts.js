@@ -33,11 +33,11 @@ export const startCreateAccount = (accountData = {}) => {
       age = '',
       location = '',
       email = '',
-      userName = '',
+      username = '',
       password = '' 
     } = accountData;
 
-    const account = { firstName, lastName, age, location, email, userName, password }
+    const account = { firstName, lastName, age, location, email, username, password }
 
     axios.post(urlAPI, account)
       .then(
