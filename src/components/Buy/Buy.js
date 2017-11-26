@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { recieveAll } from '../../actions/items';
+
+import { startRecieveAll } from '../../actions/items';
 import SuperSearch from '../SuperSearch/SuperSearch';
 import BuyList from './BuyList';
 
@@ -9,11 +9,8 @@ import BuyList from './BuyList';
 
 export class Buy extends React.Component {
   componentDidMount() {
-    const urlAPI = 'http://localhost:3001/api/items';
-    axios.get(urlAPI)
-      .then(res => {
-        this.props.recieveAll(res.data);
-      })
+
+    this.props.startRecieveAll();
   }
   render() {
     return (
@@ -35,7 +32,7 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  recieveAll: (data) => dispatch(recieveAll(data))
+  startRecieveAll: () => dispatch(startRecieveAll())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Buy);

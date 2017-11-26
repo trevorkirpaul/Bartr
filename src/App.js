@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import axios from 'axios';
 import './App.css';
-import { recieveAll } from './actions/items';
 
-// TODO move this and axios to items actions
+// for styling user profile
+import {accountLogin} from './actions/login';
+
+
+
 const store = configureStore();
-const urlAPI = 'http://localhost:3001/api/items';
+
+store.dispatch(accountLogin({username: 'trevor', password: 'password'}));
+
 
 export default class App extends Component {
 
-  componentDidMount() {
-    axios.get(urlAPI)
-      .then(res => {
-        store.dispatch(recieveAll(res.data));
-        
-      });   
-  }
+ 
   render() {
     return (
       <div className="App">
@@ -32,12 +30,3 @@ export default class App extends Component {
   }
 }
 
-// const mapStateToProps = (state, props) => ({
-//   accounts: state.accounts
-// })
-
-// const mapDispatchToProps = (dispatch, props) => ({
-//   startRecieveAccounts: () => dispatch(startRecieveAccounts())
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);

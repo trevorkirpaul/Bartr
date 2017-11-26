@@ -83,11 +83,14 @@ router.route('/items')
 router.route('/items/:item_id')
   // delete item  
   .delete((req,res) => {
+    const idToDelete = req.params.item_id;
     Item.remove({
       _id: req.params.item_id
     }, (err, item) => {
       if (err)
       res.send(err);
+      // send back the id that was sent here so I can dispatch it to redux
+      res.send(idToDelete);
     });    
   });
 
@@ -116,7 +119,6 @@ router.route('/login')
   .post((req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    
     Account.findOne({ username: username }, (err, obj) => {
       if (!obj) {
         res.send('no user found');

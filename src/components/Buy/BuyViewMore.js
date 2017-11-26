@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteItem } from '../../actions/items';
+import { startRemoveItem } from '../../actions/items';
 
 export class BuyViewMore extends React.Component {
   onClick = () => {
     const id = this.props.item._id;
-    
-    this.props.deleteItem(id);
-    this.props.history.push('/');
+    this.props.startRemoveItem(id);
+    this.props.history.push('/buy');
   }
   render() {
     return (
@@ -33,7 +32,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteItem: (itemId) => deleteItem(itemId)
+    startRemoveItem: (itemId) => dispatch(startRemoveItem(itemId))
   };
 }
 

@@ -41,18 +41,45 @@ export const removeItem = (itemId) => ({
   itemId
 });
 
-export const deleteItem = (itemId) => {
+// export const deleteItem = (itemId) => {
+//   const urlAPI = 'http://localhost:3001/api/items/' + itemId;
+//   axios.delete(urlAPI, itemId)
+//     .then(
+//       (itemId) => {
+//         // dispatch(removeItem(itemId));
+//       }
+//     )
+//     .catch(err => console.err);
+// }
+
+export const startRemoveItem = (itemId) => {
   const urlAPI = 'http://localhost:3001/api/items/' + itemId;
-  axios.delete(urlAPI, itemId)
-    .then(
-      (itemId) => {
-        // dispatch(removeItem(itemId));
-      }
-    )
-    .catch(err => console.err);
+  const deleteItem = axios.delete(urlAPI, itemId);
+  return(dispatch) => {
+    deleteItem.then(({data}) => {
+      dispatch({
+        type: 'DELETE_ITEM',
+        itemId: data
+      });
+    });    
+  };
 }
 
-export const recieveAll = (data) => ({
-  type: 'RECIEVE_ALL',
-  data
-});
+// export const recieveAll = (data) => ({
+//   type: 'RECIEVE_ALL',
+//   data
+// });
+
+export const startRecieveAll = () => {
+  const urlAPI = 'http://localhost:3001/api/items';
+  const requestAllItems = axios.get(urlAPI);
+  // bc of redux-thunk, we are returning a dispatch fxn
+  return (dispatch) => {
+    requestAllItems.then(({data}) => {
+      dispatch({
+        type: 'RECIEVE_ALL',
+        data
+      });
+    });
+  };
+}

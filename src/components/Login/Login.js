@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoginForm from './LoginForm';
-import axios from 'axios';
-import {setUser} from '../../actions/login';
+import { accountLogin} from '../../actions/login';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -12,33 +11,24 @@ export class Login extends React.Component {
     }
   }
   onSubmit = (loginData) => {
-    // console.log(loginData);
-    axios.post('http://localhost:3001/api/login', loginData)
-      .then(
-        (response) => {
-          
-          // check response from server then either login or render error elements
-
-          if (response.data.username === loginData.username) {
-            this.props.setUser(response.data);
-            this.setState(() => ({
-              error: ''
-            }));
-            this.props.history.push('/');
-          } else if (response.data === 'no user found') {
-            this.setState(() => ({
-              error: `No users were found matching ${loginData.username}`
-            }));
-          } else if (response.data === 'incorrect password') {
-            this.setState(() => ({
-              error: 'Incorrect password'
-            }));
-          }
-
-           
-        }
-      )
-      .catch(err => console.err);
+    this.props.accountLogin(loginData);    
+  }
+  componentWillReceiveProps(nextProps) {
+    // after dispatching login info, we check what was returned from the server and sent to us as a prop from connect under login
+    if (nextProps.login === 'no user found') {
+      this.setState(() => ({
+        error: nextProps.login
+      }));
+    } else if (nextProps.login === 'incorrect password') {
+      this.setState(() => ({
+        error: nextProps.login
+      }));
+    } else {
+      this.setState(() => ({
+        error: ''
+      }));
+      this.props.history.push('/');
+    }
   }
   render() {
     return (
@@ -55,10 +45,16 @@ export class Login extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    setUser: (account) => dispatch(setUser(account))
+    login: state.login
   };
 }
 
-export default connect(undefined, mapDispatchToProps)(Login);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    accountLogin: (account) => dispatch(accountLogin(account))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
