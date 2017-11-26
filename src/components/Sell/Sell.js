@@ -1,6 +1,7 @@
 import React from 'react';
 import SellForm from './SellForm';
 import {connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { startAddItem } from '../../actions/items';
 
 
@@ -8,7 +9,10 @@ import { startAddItem } from '../../actions/items';
 export class Sell extends React.Component {
 
   onSubmit = (item) => {
-    this.props.startAddItem(item);
+    this.props.startAddItem({
+      ...item,
+       "createdBy": this.props.account.username
+    });
     this.props.history.push('/buy'); 
   };
 
@@ -20,15 +24,27 @@ export class Sell extends React.Component {
             <h2>Selling an item? Complete this form to add a new post!</h2>
           </div>
           <div className="sellForm">
-            <SellForm
+            {
+
+              this.props.account.username ?  <SellForm
               onSubmit={this.onSubmit}
-            />
+            /> :
+            <div>
+              <span>You must be logged in to sell an item.</span>
+              <Link to="/login">Click here to login</Link>
+            </div>
+
+            }
+           
           </div>
         </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  account: state.login
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -36,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(undefined,mapDispatchToProps)(Sell);
+export default connect(mapStateToProps,mapDispatchToProps)(Sell);

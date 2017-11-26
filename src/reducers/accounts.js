@@ -11,6 +11,10 @@ export default ( state = accountsReducerDefaultState, action ) => {
         ...state,
         action.account
       ];
+    case 'UPDATE_ACCOUNT':
+      return [
+        action.account
+      ]
     default:
       return state;
   }

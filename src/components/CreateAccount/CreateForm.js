@@ -4,12 +4,12 @@ export default class CreateForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      age: '',
-      location: '',
-      email: '',
-      username: '',
+      firstName: this.props.firstName ? this.props.firstName : '',
+      lastName: this.props.lastName ? this.props.lastName : '',
+      age: this.props.age ? this.props.age : '',
+      location: this.props.location ? this.props.location : '',
+      email: this.props.email ? this.props.email : '',
+      username: this.props.username ? this.props.username : '',
       password: '',
       error: ''
     }
@@ -193,7 +193,7 @@ export default class CreateForm extends React.Component {
 
           
           <div className="formButtonsDiv">
-            <button>Create Account!</button>
+            <button>{this.props.username ? 'Update Profile':'Create Profile'}</button>
           </div>
         </form>
       </div>

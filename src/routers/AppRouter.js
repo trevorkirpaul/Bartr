@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import CreateAccount from '../components/CreateAccount/CreateAccount';
+import EditProfile from '../components/Profile/EditProfile';
 import Home from '../components/Home/Home';
 import Buy from '../components/Buy/Buy';
 import BuyViewMore from '../components/Buy/BuyViewMore';
@@ -22,6 +23,7 @@ const AppRouter = () => (
         <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
         <Route path="/createAccount" component={CreateAccount} />
+        <Route path="/editAccount" component={EditProfile} />
         <Route component={NotFound}/>
       </Switch>
     </div>

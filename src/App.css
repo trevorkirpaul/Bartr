@@ -232,6 +232,16 @@ header div .is-active, nav .is-active {
   font-weight: 300;
 }
 
+.BuyListItem .createdByWrapper {
+  padding: 0px 15px;
+  margin-bottom: 5px;
+}
+
+.BuyListItem .createdByWrapper span {
+  color: #F1F5F7;
+  font-family: 'Roboto',sans-serif;
+}
+
 .BuyListItem .desWrapper {
   padding: 15px;
   background: #383838;
@@ -356,4 +366,60 @@ header div .is-active, nav .is-active {
   background: #383838;
   color: #F1F5F7;
   cursor: pointer;
+}
+
+/* 
+
+  USER PROFILE COMPONENT
+
+*/
+
+.profileWrapper {
+  max-width: 900px;
+  margin: 15px auto;
+  color: #383838;
+  font-family: 'Roboto', sans-serif;
+}
+
+.profileWrapper h1 {
+  font-weight: 700;
+  font-size: 3em;
+  margin-bottom: 45px;
+}
+
+.profileWrapper .greetPane {
+  border-top: 1px solid #383838;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.profileWrapper .greetPane h2 {
+  font-weight: 300;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.profileWrapper .profileSettingsPane {
+  border-top: 1px solid #383838;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.profileWrapper .profileSettingsPane h2 {
+  font-weight: 300;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.profileWrapper .profileSettingsPane p {
+  line-height: 35px;
+}
+.profileWrapper .profileSettingsPane .fieldLabel {
+  font-weight: 600;
+}
+
+.profileWrapper .profileSettingsPane a {
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
+  font-weight: 600;
 }

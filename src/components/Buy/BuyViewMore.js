@@ -17,6 +17,7 @@ export class BuyViewMore extends React.Component {
             <div className="itemInfo">
               <h1>{this.props.item.title}</h1>
               <h3>{this.props.item.description}</h3>
+              <p>sold by: {this.props.item.createdBy}</p>
             </div>          
         }
         <button onClick={this.onClick}>Remove</button>

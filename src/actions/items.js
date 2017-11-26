@@ -14,10 +14,11 @@ export const startAddItem = (itemData = {}) => {
     const {
       title = '',
       description = '',
-      price = 0
+      price = 0,
+      createdBy = ''
     } = itemData;
 
-    const item = { title, description, price };
+    const item = { title, description, price, createdBy };
     const urlAPI = 'http://localhost:3001/api/items';
 
     axios.post(urlAPI, item)

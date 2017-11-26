@@ -19,5 +19,17 @@ export const accountLogin = (loginData) => {
       })
     })
   }
- 
+}
+
+export const startUpdateAccount = (accountData = {}) => {
+  const urlAPI = 'http://localhost:3001/api/account';
+  const updateAccount = axios.put(urlAPI, accountData);
+  return (dispatch) => {
+    updateAccount.then(({data}) => {
+      dispatch({
+        type: 'UPDATE_ACCOUNT',
+        account: data
+      });
+    });
+  };
 }

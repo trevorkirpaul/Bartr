@@ -72,6 +72,7 @@ router.route('/items')
     item.title = req.body.title;
     item.description = req.body.description;
     item.price = req.body.price;
+    item.createdBy = req.body.createdBy;
 
     item.save((err, item) => {
       if (err)
@@ -109,7 +110,31 @@ router.route('/account')
           "email": obj.email,
           "username": obj.username
         });
-      // res.send(obj);
+    })
+  })
+  .put((req, res) => {
+    const id = req.body._id;
+   
+    Account.findOne({_id: id}, (err, account) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        account.location = req.body.location;
+        account.age = req.body.age;
+        account.username = req.body.username;
+        account.password = req.body.password;
+        account.firstName = req.body.firstName;
+        account.lastName = req.body.lastName;
+        account.email = req.body.email;
+
+        account.save((err, account) => {
+          if (err) {
+            res.status(500).send(err)
+          }
+          res.send(account);
+          
+        });
+      }
     })
   })
 

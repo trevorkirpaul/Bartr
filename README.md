@@ -35,6 +35,10 @@ I'm using create-react-app as a boilerplate.
 
 >I also implemented a filter for items. I only filter by text for now but the framework is in place. I still need to work on image uploads for items and for account avatars. I've been doing research on the side and it's making a lot more sense now. At the same time I want to rework the backend for the API. Backend is my weakest understanding but this project alone has greatly increased my knowlegde about it. Overall I'm very satisfied with what I'm learning, my progress and the app so far. 
 
+### November 26th, 2017
+
+>I spent a lot of time again dealing with some issues which is fine because I definitely learned a lot today. I set up a system for the currently logged in user to edit their profile. Prior to starting to work on this project, I saw a video that really helped my understand what Redux-Thunk has been doing. I then refactored a lot of API calls and moved them into thier respective actions. Despite that fact that it took some time to deal with errors today, I learned a lot and I can now easily reproduce the results whenever needed. I still need to tackle the image upload but I've yet to figure out how I want to do it. I thought I would need to do a seperate API call but after some thinking I believe I can send the img with the obj sent during the post call and just select the img in the route function and use multer to save it. Hopefully I can tackle that tommorrow. 
+
 ### Concerns
 1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~
 2. I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.
