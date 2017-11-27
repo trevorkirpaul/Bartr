@@ -10,17 +10,6 @@ export const startAddItem = (itemData ={}, image) => {
   // const addItem = axios.post(urlAPI, itemData);
   const addImage = axios.post(imgAPI, formData);
 
-  
-
-  // return(dispatch) => {
-  //   addItem.then(({data}) => {
-  //     dispatch({
-  //       type: 'ADD_ITEM',
-  //       item: data
-  //     });
-  //   });
-  // };
-
   return (dispatch) => {
     addImage.then(({data}) => {
       const imagePath = data.path;

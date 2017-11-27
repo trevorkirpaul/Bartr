@@ -17,7 +17,7 @@ I'm using create-react-app as a boilerplate.
 
 ### November 21, 2017
 
-> First upload to github. I've began some initialy frameworking including setting up the redux store and one  action (addItem). I'm currently just displaying the state unfiltered on the buy page. React Router has also been used. Basic styling has only been added to the header and the 'SuperSearch' component.
+> First upload to github. I've began some initial frameworking including setting up the redux store and one  action (addItem). I'm currently just displaying the state unfiltered on the buy page. React Router has also been used. Basic styling has only been added to the header and the 'SuperSearch' component.
 
 ### November 22, 2017
 
@@ -38,6 +38,16 @@ I'm using create-react-app as a boilerplate.
 ### November 26th, 2017
 
 >I spent a lot of time again dealing with some issues which is fine because I definitely learned a lot today. I set up a system for the currently logged in user to edit their profile. Prior to starting to work on this project, I saw a video that really helped my understand what Redux-Thunk has been doing. I then refactored a lot of API calls and moved them into thier respective actions. Despite that fact that it took some time to deal with errors today, I learned a lot and I can now easily reproduce the results whenever needed. I still need to tackle the image upload but I've yet to figure out how I want to do it. I thought I would need to do a seperate API call but after some thinking I believe I can send the img with the obj sent during the post call and just select the img in the route function and use multer to save it. Hopefully I can tackle that tommorrow. 
+
+### November 27, 2017
+
+>I decided today that I need to implement the image upload feature. I had two routes, either work on profil avatars or imaegs for the items for sale. In retrospect, profile avatars might have been easier but I'm very proud of what I accomplished today. I used multer to get the image from the http request but the complicated part was figuring out how to send the request from redux. I set up two http requests to two different routes, one being the originaly way to add an item and the new one being specifically for images. I chained both http requests together in seperate promises for obvious reasons. Then I just added a second response with the uploaded images filename and passed it into a new property for the item. I map each `BuyListItem` with an image that has a source of a variable representing the server ip and combine with the redux item state's property that was returned from each image upload.
+
+>It took a lot of time to get this working but it was definintely worth it and it works flawlessly. I'll need to tweak a lot of things for deployment but that's another bridge.
+
+>One big thing I did before this was to restructure the entire api server file. Following some examples I had everything said up in a way that I didn't truly understand. I rewrote it line and line and I think it's much better now. I have one route that I need to remove possibly however. I've learned so much about the backend request handeling and http requests in general. Most of my methods used are pretty basic but I've learned a lot so far. I'll work on user profile avatars tomorrow and I'll also focus on finishing up styling everything. After that I want to implement tags for the items, locations based on the user who uploaded them and a feature for user dashboads where they can view personally uploaded items. I've had a remove function for each item accessible to everyone from the beginning for toute testing purposes but they'll be moved to the new dashboard features.
+
+> **It's now a week** into the project and I'm happy with the progress made so far. I gave myself two weeks and I think I might be able to come close. It really depends on how much work I have to put into actually deploying the entire project.
 
 ### Concerns
 1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~

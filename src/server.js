@@ -16,7 +16,7 @@ const promise = mongoose.connect('mongodb://localhost:27017/barterDB', {
 // set up multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './public/images')
+    cb(null, './uploads/')
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -177,6 +177,7 @@ app.post('/api/login', (req, res) => {
 // final config
 
 // app.use('/api', router);
+app.use(express.static('uploads'));
 
 app.listen(port, () => {
   console.log(`App running on ${port}`);

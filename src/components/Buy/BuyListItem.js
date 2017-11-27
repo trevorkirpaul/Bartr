@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const urlIMGpub = 'http://localhost:3001/';
 
 export default ({ title, description, price, _id, createdBy, imagePath ='empty' }) => (
   <div className="BuyListItem">
     
       <div className="imageWrapper">
-        <img src={
-          'static/images/' + imagePath
-        } alt="r"/>
+        <img src={`${urlIMGpub}${imagePath}`} alt="none"/>
 
       </div>
       <div className="titleWrapper">
