@@ -204,6 +204,19 @@ header div .is-active, nav .is-active {
   background: #383838;
 }
 
+
+
+.BuyListItem .imageWrapper {
+  height: 250px;
+  width: 250px;
+  background: #383838;
+}
+
+.BuyListItem .imageWrapper img {
+  width: auto;
+  height: 100%;
+}
+
 .BuyListItem .titleWrapper {
   padding: 15px;
   background: #383838;

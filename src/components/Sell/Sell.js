@@ -8,12 +8,14 @@ import { startAddItem } from '../../actions/items';
 
 export class Sell extends React.Component {
 
-  onSubmit = (item) => {
+  onSubmit = (item, image) => {
+    // console.log({...item, ...image});
     this.props.startAddItem({
       ...item,
        "createdBy": this.props.account.username
-    });
-    this.props.history.push('/buy'); 
+    }, image);
+    this.props.history.push('/buy');
+    
   };
 
   render() {
@@ -48,7 +50,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    startAddItem: (item) => dispatch(startAddItem(item))
+    startAddItem: (item, image) => dispatch(startAddItem(item, image))
   };
 }
 

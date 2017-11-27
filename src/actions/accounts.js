@@ -23,32 +23,17 @@ export const createAccount = (account) => ({
   account
 });
 
+
 export const startCreateAccount = (accountData = {}) => {
-  const urlAPI = 'http://localhost:3001/api/accounts';
-
-  return(dispatch) => {
-    const {
-      firstName = '',
-      lastName = '',
-      age = '',
-      location = '',
-      email = '',
-      username = '',
-      password = '' 
-    } = accountData;
-
-    const account = { firstName, lastName, age, location, email, username, password }
-
-    axios.post(urlAPI, account)
-      .then(
-        (response) => {
-          dispatch(createAccount({
-            _id: response.data.id,
-            ...account
-          }))
-        }
-      )
-      .catch(err => console.err);
+  const urlAPI = 'http://localhost:3001/api/accountCreate';
+  const createAccount = axios.post(urlAPI, accountData);
+  return (dispatch) => {
+    createAccount.then(({data}) => {
+      dispatch({
+        type: 'LOG_IN',
+        data
+      });
+    });
   }
 }
 

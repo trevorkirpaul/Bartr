@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import BuyListItem from './BuyListItem';
 import ItemSelector from '../../selectors/items';
 
+
 export const BuyList = (props) => (
   <div className="BuyListWrapper">  
     {

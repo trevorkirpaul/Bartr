@@ -7,7 +7,7 @@ export default class SellForm extends React.Component {
       title: '',
       description: '',
       price: '',
-      image:''
+      image: ''
     };
   }
 
@@ -31,6 +31,7 @@ export default class SellForm extends React.Component {
   }
   onSubmit = (e) => {
     e.preventDefault();
+          
     if(!this.state.description || !this.state.title || !this.state.price) {
       alert('please fill out all of the fields!');
     } else {
@@ -38,19 +39,17 @@ export default class SellForm extends React.Component {
         title: this.state.title,
         description: this.state.description,
         price: this.state.price
-      });
+      }, this.state.image);
     }
   }
-  // for testing
-  imageLog = (e) => {
-    e.preventDefault();
-   
-    console.log(this.state.image);
-  }
-  onImgSelect = (e) => {
+  handleImage = (e) => {
+    
+    const image = e.target.files[0];
     this.setState(() => ({
-      image: e.target.value
-    }));
+      image
+    }))
+    
+    
   }
 
   render() {
@@ -89,6 +88,7 @@ export default class SellForm extends React.Component {
               id="itemImage"
               name="itemImage"
               accept=".jpg, .jpeg, .png"
+              onChange={this.handleImage}
             />
             <button onClick={this.imageLog}>log</button>
           </div>
