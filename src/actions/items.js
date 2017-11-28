@@ -27,7 +27,6 @@ export const startAddItem = (itemData ={}, image) => {
   };
 }
 
-
 export const startRemoveItem = (itemId) => {
   const urlAPI = 'http://localhost:3001/api/items/' + itemId;
   const deleteItem = axios.delete(urlAPI, itemId);

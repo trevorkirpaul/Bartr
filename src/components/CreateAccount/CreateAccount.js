@@ -4,8 +4,8 @@ import { startCreateAccount } from '../../actions/accounts';
 import CreateForm from './CreateForm';
 
 export class CreateAccount extends React.Component {
-  onSubmit = (account) => {
-    this.props.startCreateAccount(account);
+  onSubmit = (account, avatar) => {
+    this.props.startCreateAccount(account, avatar);
     this.props.history.push('/');
   }
   render() {
@@ -15,7 +15,7 @@ export class CreateAccount extends React.Component {
         <h1>Create Account</h1>
         <h2>Please complete this form to begin using bartr!</h2>
       </div>
-      <CreateForm onSubmit={this.onSubmit}/>
+      <CreateForm onSubmit={this.onSubmit} avatarForm={true}/>
       </div>
     );
   }
@@ -23,7 +23,7 @@ export class CreateAccount extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    startCreateAccount: (account) => dispatch(startCreateAccount(account))
+    startCreateAccount: (account, avatar) => dispatch(startCreateAccount(account, avatar))
   };
 }
 

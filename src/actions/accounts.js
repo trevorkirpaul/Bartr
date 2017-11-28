@@ -18,22 +18,60 @@ export const recieveAccounts = (data) => ({
 
 // create account
 
-export const createAccount = (account) => ({
-  type: 'CREATE_ACCOUNT',
-  account
-});
+// export const createAccount = (account) => ({
+//   type: 'CREATE_ACCOUNT',
+//   account
+// });
 
 
-export const startCreateAccount = (accountData = {}) => {
+export const startCreateAccount = (accountData = {}, avatar) => {
+  // set up form data for avatar
+  const formData = new FormData();
+  formData.append('avatar', avatar);
+
+
   const urlAPI = 'http://localhost:3001/api/accountCreate';
-  const createAccount = axios.post(urlAPI, accountData);
+  const avatarAPI = 'http://localhost:3001/api/accountCreate/avatar';
+  // const createAccount = axios.post(urlAPI, accountData);
+  const createAvatar = axios.post(avatarAPI, formData);
+ 
   return (dispatch) => {
-    createAccount.then(({data}) => {
-      dispatch({
-        type: 'LOG_IN',
-        data
-      });
-    });
+    createAvatar.then(({data}) => {
+      const avatarPath = data.avatarPath;
+      const obj = {
+        ...accountData,
+        avatarPath
+      };
+      axios.post(urlAPI, obj).then(({data}) => {
+        dispatch({
+          type: 'LOG_IN',
+          data
+        })
+      })
+    })
+  }
+}
+
+export const startUpdateAvatar = (avatar, account) => {
+  // set up FormData for new avatar
+  const formData = new FormData();
+  formData.append('avatar', avatar);
+  const avatarAPI = 'http://localhost:3001/api/accountCreate/avatar';
+  const updateAccountAPI = 'http://localhost:3001/api/account';
+  const updateAvatar = axios.post(avatarAPI, formData);
+   
+  return (dispatch) => {
+    updateAvatar.then(({data}) => {
+      axios.put(updateAccountAPI, {
+        ...account,
+        ...data
+      }).then(({data}) => {
+        dispatch({
+          type: 'UPDATE_ACCOUNT',
+          account: data
+        })
+      })
+    })
   }
 }
 

@@ -15,8 +15,16 @@ const promise = mongoose.connect('mongodb://localhost:27017/barterDB', {
 
 // set up multer
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (req, file, cb) => {    
     cb(null, './uploads/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+const storageAvatar = multer.diskStorage({
+  destination: (req, file, cb) => {    
+    cb(null, './uploads/avatar')
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -24,6 +32,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage : storage});
+const uploadAvatar = multer({storage : storageAvatar});
 
 // middleware
 
@@ -52,6 +61,17 @@ app.get('/api/items', (req, res) => {
   });
 });
 
+app.post('/api/item/:item_id', (req, res) => {
+  const itemID = req.params.item_id;
+  
+  Item.findOne({_id: itemID}, (err, item) => {
+    if (err)
+    res.send(err);
+
+    res.send(item);
+  })
+})
+
 app.post('/api/items', (req, res) => {
   const item = new Item();
   // body parser lets us use the req.body
@@ -76,11 +96,11 @@ app.post('/api/items/img', upload.single('image'), (req, res) => {
       path: req.file.originalname  
     })
   } else {
-    res.send({path: 'empty'});
+    res.send({path: 'empty.jpeg'});
   }
 
 });
-
+// delete item
 app.delete('/api/items/:item_id', (req, res) => {
   const idToDelete = req.params.item_id;
   Item.remove({
@@ -123,6 +143,7 @@ app.put('/api/account', (req, res) => {
       account.firstName = req.body.firstName;
       account.lastName = req.body.lastName;
       account.email = req.body.email;
+      account.avatarPath = req.body.avatarPath;
 
       account.save((err, account) => {
         if (err) {
@@ -135,7 +156,7 @@ app.put('/api/account', (req, res) => {
 });
 // create account
 app.post('/api/accountCreate', (req, res) => {
-  const { firstName, lastName, age, location, email, username, password } = req.body;
+  const { firstName, lastName, age, location, email, username, password, avatarPath } = req.body;
   const account = new Account();
   account.firstName = firstName;
   account.lastName = lastName;
@@ -144,6 +165,7 @@ app.post('/api/accountCreate', (req, res) => {
   account.email = email;
   account.username = username;
   account.password = password;
+  account.avatarPath = avatarPath;
 
   account.save((err, account) => {
     if(err)
@@ -155,10 +177,25 @@ app.post('/api/accountCreate', (req, res) => {
       lastName,
       email,
       age,
-      location
+      location,
+      avatarPath
     });
   });
 });
+// profile avatar
+
+app.post('/api/accountCreate/avatar', uploadAvatar.single('avatar'), (req, res) => {
+  if(req.file) {
+    res.send({
+      avatarPath: req.file.originalname
+    })
+  } else {
+    res.send({
+      avatarPath: 'defaultAvatar.png'
+    })
+  }
+});
+
 
 // ROUTE LOGIN
 app.post('/api/login', (req, res) => {

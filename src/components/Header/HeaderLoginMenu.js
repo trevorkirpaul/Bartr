@@ -6,7 +6,7 @@ export class HeaderLoginMenu extends React.Component {
   render() {
     return (
       <div>
-        <HeaderAccountMenu accountUserName={this.props.accountUserName} />
+        <HeaderAccountMenu accountUserName={this.props.accountUserName} accountAvatar={this.props.accountAvatar} />
       </div>
     );
   }
@@ -14,7 +14,8 @@ export class HeaderLoginMenu extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    accountUserName: state.login.username
+    accountUserName: state.login.username,
+    accountAvatar: state.login.avatarPath
   }
 }
 

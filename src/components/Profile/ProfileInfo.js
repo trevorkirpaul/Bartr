@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+const urlIMGavatar = 'http://localhost:3001/avatar/';
 
-export default ({ username, email, age, location, firstName, lastName, _id, password }, props) => (
+export default ({ username, email, age, location, firstName, lastName, _id, password, avatarPath }, props) => (
   <div className="profileWrapper">
     <div>
       <h1>Dashboard</h1>      
@@ -9,7 +10,19 @@ export default ({ username, email, age, location, firstName, lastName, _id, pass
 
     <div className="greetPane">
       <h2>{username}</h2>      
-      <h3>Welcome {firstName} {lastName}!</h3>      
+      <h3>Welcome {firstName} {lastName}!</h3>
+      {
+        avatarPath && <img
+        src={`${urlIMGavatar}${avatarPath}`}
+        alt=""
+        style={{
+            width: '200px',
+            height:'200px'
+          }}
+      />
+      }
+      
+      <Link to="/editAccount/avatar">upload new avatar...</Link>
     </div>
     <div className="profileSettingsPane">
      <h2>Profile</h2>

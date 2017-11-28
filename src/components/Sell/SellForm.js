@@ -7,7 +7,11 @@ export default class SellForm extends React.Component {
       title: '',
       description: '',
       price: '',
-      image: ''
+      image: '',
+      error: '',
+      errorTitle: '',
+      errorDes: '',
+      errorPrice: ''
     };
   }
 
@@ -29,12 +33,25 @@ export default class SellForm extends React.Component {
       description
     }));
   }
+
   onSubmit = (e) => {
     e.preventDefault();
           
     if(!this.state.description || !this.state.title || !this.state.price) {
-      alert('please fill out all of the fields!');
+      this.setState(() => ({
+        error: '* Please complete the form!'
+      }));
+      // functions to apply passed class name to any blank inputs
+      const applyTitleBorder = (className) => this.setState(() => ({errorTitle: className}));
+      const applyDesBorder = (className) => this.setState(() => ({errorDes: className}));
+      const applyPriceBorder = (className) => this.setState(() => ({errorPrice: className}));
+  
+      !this.state.title ? applyTitleBorder('inputHighlightError') : applyTitleBorder('');
+      !this.state.description ? applyDesBorder('inputHighlightError') : applyDesBorder('');
+      !this.state.price ? applyPriceBorder('inputHighlightError') : applyPriceBorder('');
+      
     } else {
+      this.setState(() => ({error: ''}));
       this.props.onSubmit({
         title: this.state.title,
         description: this.state.description,
@@ -42,19 +59,17 @@ export default class SellForm extends React.Component {
       }, this.state.image);
     }
   }
-  handleImage = (e) => {
-    
+  handleImage = (e) => {    
     const image = e.target.files[0];
     this.setState(() => ({
       image
-    }))
-    
-    
+    }));  
   }
 
   render() {
     return (
       <div className="sellForm__form">
+        <h3 id="errorMessage">{this.state.error}</h3>
         <form onSubmit={this.onSubmit}>
 
           <div>
@@ -64,6 +79,7 @@ export default class SellForm extends React.Component {
               placeholder="Enter Post Title"
               value={this.state.title}
               onChange={this.onTitleChange}
+              className={this.state.errorTitle}
             />
           </div>
           <div>
@@ -72,6 +88,7 @@ export default class SellForm extends React.Component {
               placeholder="Enter Selling Price"
               value={this.state.price}
               onChange={this.onPriceChange}
+              className={this.state.errorPrice}
             />
           </div>
           <div>
@@ -79,6 +96,7 @@ export default class SellForm extends React.Component {
               placeholder="Enter a description of your post/item"
               value={this.state.description}
               onChange={this.onDescriptionChange}
+              className={this.state.errorDes}
             >
             </textarea>
           </div>

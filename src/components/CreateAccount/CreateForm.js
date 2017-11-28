@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CreateAvatar from './CreateAvatar';
 export default class CreateForm extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +11,8 @@ export default class CreateForm extends React.Component {
       email: this.props.email ? this.props.email : '',
       username: this.props.username ? this.props.username : '',
       password: '',
-      error: ''
+      error: '',
+      avatar: ''
     }
   }
   onChangeFirstName = (e) => {
@@ -56,6 +57,20 @@ export default class CreateForm extends React.Component {
       password
     }));
   }
+  onChangeAvatar = e => {
+    const avatar = e.target.files[0];
+    this.setState(() => ({
+      avatar
+    }));
+    // console.log(avatar);
+    // use filereader to preview image held in state/file input
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById('avatarPreview').src = e.target.result;
+    };
+
+    reader.readAsDataURL(avatar);
+  }
   onSubmit = (e) => {
     e.preventDefault();   
 
@@ -94,7 +109,7 @@ export default class CreateForm extends React.Component {
         email: this.state.email,
         username: this.state.username,
         password: this.state.password
-      });
+      }, this.state.avatar);
      this.setState(() => ({
       error: ''
      }));
@@ -190,6 +205,11 @@ export default class CreateForm extends React.Component {
               id="inpConfirmPass"
             />
           </div>
+          {
+            this.props.avatarForm && <CreateAvatar onChangeAvatar={this.onChangeAvatar}/>
+          }
+          
+          
 
           
           <div className="formButtonsDiv">

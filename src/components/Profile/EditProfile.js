@@ -7,7 +7,7 @@ import {startUpdateAccount} from '../../actions/accounts';
 export class EditProfile extends React.Component {
   onSubmit = (profile) => {
     const idFromState = this.props.profile._id;
-    this.props.startUpdateAccount({...profile, "_id": idFromState});
+    this.props.startUpdateAccount({...profile, "_id": idFromState, "avatarPath": this.props.profile.avatarPath});
     this.props.history.push("/profile");
     
     console.log({...profile, "_id": idFromState});
@@ -17,7 +17,7 @@ export class EditProfile extends React.Component {
     return (
       <div>
         <h1>Edit Profile</h1>
-        <CreateForm onSubmit={this.onSubmit} {...this.props.profile}/>
+        <CreateForm onSubmit={this.onSubmit} {...this.props.profile} avatarForm={false}/>
       </div>
     );
   }
