@@ -83,14 +83,14 @@ header div .is-active, nav .is-active {
     SUPER SEARCH COMPONENT
 */
 
-.formWrapper {
+/* .formWrapper {
   max-width: 900px;
   margin: 15px auto;
   padding: 25px;
   display: flex;
-}
+} */
 
-.formWrapper div {
+/* .formWrapper div {
   flex: 2;
 }
 
@@ -125,7 +125,7 @@ header div .is-active, nav .is-active {
   margin-top: 22px;
   padding: 5px;
   width: 95%;
-}
+} */
 
 /* 
   SELL COMPONENT

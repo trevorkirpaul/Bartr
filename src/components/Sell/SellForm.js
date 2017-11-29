@@ -1,5 +1,6 @@
 import React from 'react';
-
+import CreateTags from './CreateTags';
+// img preview has styles attached, must be changed when project is converted to styled components
 export default class SellForm extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,7 @@ export default class SellForm extends React.Component {
       description: '',
       price: '',
       image: '',
+      tags: [],
       error: '',
       errorTitle: '',
       errorDes: '',
@@ -29,9 +31,11 @@ export default class SellForm extends React.Component {
   }
   onDescriptionChange = (e) => {
     const description = e.target.value;
+    
     this.setState(() =>({
       description
     }));
+
   }
 
   onSubmit = (e) => {
@@ -55,15 +59,46 @@ export default class SellForm extends React.Component {
       this.props.onSubmit({
         title: this.state.title,
         description: this.state.description,
-        price: this.state.price
+        price: this.state.price,
+        tags: this.state.tags
       }, this.state.image);
     }
   }
   handleImage = (e) => {    
     const image = e.target.files[0];
+    const preview = document.getElementById('itemImgPreview') ;    
+    // set up file reader for image preview
+    const reader = new FileReader();
+    reader.onload = e => preview.src = e.target.result;
+    reader.readAsDataURL(image);
+
     this.setState(() => ({
       image
     }));  
+  }
+  handleTags = (e) => {
+    //on space bar key press, add value to state.tags which gets mapped
+    if (e.which === 32) {
+      // remove normal spacebar function
+      e.preventDefault();
+      const newTag = e.target.value
+      if (this.state.tags.includes(newTag) === false) {
+        this.setState(() => ({
+          tags: [...this.state.tags, newTag],
+          error: ''
+        }));
+        e.target.value = '';
+      } else {
+        this.setState(() => ({
+          error: 'duplicate tag!'
+        }))
+      }
+    } 
+  }
+  handleRemoveTag = key => {
+    this.setState(() => ({
+      tags: this.state.tags.filter((tag) => tag !== key)
+    }))
   }
 
   render() {
@@ -71,7 +106,6 @@ export default class SellForm extends React.Component {
       <div className="sellForm__form">
         <h3 id="errorMessage">{this.state.error}</h3>
         <form onSubmit={this.onSubmit}>
-
           <div>
             <input
               autoFocus
@@ -82,6 +116,7 @@ export default class SellForm extends React.Component {
               className={this.state.errorTitle}
             />
           </div>
+          <CreateTags handleTags={this.handleTags} handleRemoveTag={this.handleRemoveTag} tags={this.state.tags} />
           <div>
             <input
               type="text"
@@ -100,7 +135,7 @@ export default class SellForm extends React.Component {
             >
             </textarea>
           </div>
-          <div>
+          <div className="itemImgWrapper">
             <input
               type="file"
               id="itemImage"
@@ -108,7 +143,16 @@ export default class SellForm extends React.Component {
               accept=".jpg, .jpeg, .png"
               onChange={this.handleImage}
             />
-            <button onClick={this.imageLog}>log</button>
+            <div
+              style={{
+                width: '300px',
+                height: '300px',
+                background: 'white',
+                border: '1px solid black'
+              }}
+            >
+              <img id="itemImgPreview" alt="preview" style={{width: '100%', height: 'auto'}}/>
+            </div>
           </div>
                 
           <div>

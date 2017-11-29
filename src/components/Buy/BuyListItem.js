@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 const urlIMGpub = 'http://localhost:3001/';
 
-// let imageStyle = {
 
-// };
 
 export default ({ title, description, price, _id, createdBy, imagePath ='empty' }) => (
   <div className="BuyListItem">

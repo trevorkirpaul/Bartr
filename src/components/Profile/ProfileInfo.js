@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import ProfileItems from './ProfileItems';
 const urlIMGavatar = 'http://localhost:3001/avatar/';
 
 export default ({ username, email, age, location, firstName, lastName, _id, password, avatarPath }, props) => (
@@ -33,5 +34,6 @@ export default ({ username, email, age, location, firstName, lastName, _id, pass
      <p><span className="fieldLabel">location:</span> {location}</p>
 
     </div>
+    <ProfileItems username={username} />
   </div>
 );

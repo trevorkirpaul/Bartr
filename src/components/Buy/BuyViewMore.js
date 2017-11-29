@@ -1,11 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startRemoveItem } from '../../actions/items';
+import styled from 'styled-components';
 import axios from 'axios';
 
 // var for image path for dev, TODO change for prod
 const urlIMGpub = 'http://localhost:3001/';
+
+// styles
+const TagsList = styled.ul`
+  list-style: none;
+  margin: 0 0 15px 0;
+`;
+const TagsListItem = styled.li`
+  background: #F1F5F7;
+  border: 1px solid #F1F5F7;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 0 2px;
+  padding: 4px 4px;
+
+`;
 
 export class BuyViewMore extends React.Component {
   constructor(props) {
@@ -16,26 +31,24 @@ export class BuyViewMore extends React.Component {
       createdBy: '',
       price: '',
       description: '',
-      _id: ''
+      _id: '',
+      tags: []
     }
   }
  
-  onClick = () => {
-    const id = this.state._id;
-    this.props.startRemoveItem(id);
-    this.props.history.push('/buy');
-  }
+
   componentDidMount() {
     const id = this.props.match.params.id;
     axios.post('http://localhost:3001/api/item/'+ id).then(({data}) =>{
-      const {title, imagePath, createdBy, price, description, _id} = data;
+      const {title, imagePath, createdBy, price, description, _id, tags} = data;
       this.setState(() => ({
         title,
         imagePath,
         createdBy,
         price,
         description,
-        _id
+        _id,
+        tags
       }));
     }); 
     
@@ -49,8 +62,15 @@ export class BuyViewMore extends React.Component {
         <div className="titleInfo">
           <div className="innerTitleInfo">
             <h1>{this.state.title}</h1>
+            <TagsList>
+              {
+                this.state.tags.map((tag) => (
+                  <TagsListItem key={tag}>{tag}</TagsListItem>
+                ))
+              }
+            </TagsList>
             <h3>Sold by: {this.state.createdBy} for ${this.state.price}</h3>
-            <button onClick={this.onClick}>Remove</button>
+            
           </div>
                   
         </div>
@@ -74,10 +94,6 @@ const mapStateToProps = (state, props) => ({
   item: state.items.find((item) => item._id === props.match.params.id)
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startRemoveItem: (itemId) => dispatch(startRemoveItem(itemId))
-  };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyViewMore);
+
+export default connect(mapStateToProps)(BuyViewMore);

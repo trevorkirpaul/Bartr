@@ -79,6 +79,7 @@ app.post('/api/items', (req, res) => {
   item.description = req.body.description;
   item.price = req.body.price;
   item.createdBy = req.body.createdBy;
+  item.tags = req.body.tags;
   item.imagePath = req.body.imagePath;   
   // save to db
   item.save((err, item) => {
