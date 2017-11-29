@@ -317,14 +317,14 @@ header div .is-active, nav .is-active {
   BUYVIEWMORE COMPONENT
 */
 
-.viewMoreWrapper {
+/* .viewMoreWrapper {
   max-width: 900px;
   margin: 15px auto;
   display: flex;
   flex-direction: column;
 }
 /* title */
-.viewMoreWrapper .titleInfo .innerTitleInfo  {
+/* .viewMoreWrapper .titleInfo .innerTitleInfo  {
   display: flex;
   flex-direction: column;
   background: #383838;
@@ -341,7 +341,7 @@ header div .is-active, nav .is-active {
 .viewMoreWrapper .titleInfo h3 {
   color: #F1F5F7;
   font-weight: 500;
-}
+} */ 
 
 
 

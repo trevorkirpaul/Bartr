@@ -12,7 +12,8 @@ export class Sell extends React.Component {
     // console.log({...item, ...image});
     this.props.startAddItem({
       ...item,
-       "createdBy": this.props.account.username
+       "createdBy": this.props.account.username,
+       "location": this.props.account.location
     }, image);
     this.props.history.push('/buy');
     

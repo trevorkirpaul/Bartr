@@ -6,6 +6,7 @@ const ItemSchema = new Schema({
   description: String,
   price: String,
   createdBy: String,
+  location: String,
   imagePath: String,
   tags: []
 });

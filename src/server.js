@@ -80,7 +80,8 @@ app.post('/api/items', (req, res) => {
   item.price = req.body.price;
   item.createdBy = req.body.createdBy;
   item.tags = req.body.tags;
-  item.imagePath = req.body.imagePath;   
+  item.imagePath = req.body.imagePath; 
+  item.location = req.body.location;  
   // save to db
   item.save((err, item) => {
     if (err)

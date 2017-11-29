@@ -9,3 +9,8 @@ export const setTagFilter = (text ='') => ({
   type: 'SET_TAG_FILTER',
   text
 });
+
+export const setLocationFilter = (text = '') => ({
+  type: 'SET_LOCATION_FILTER',
+  text
+});

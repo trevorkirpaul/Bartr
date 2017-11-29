@@ -2,7 +2,8 @@
 
 const filtersReducerDefaultState = {
   text: '',
-  tag: ''
+  tag: '',
+  location: ''
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -16,6 +17,11 @@ export default (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         tag: action.text
+      }
+    case 'SET_LOCATION_FILTER':
+      return {
+        ...state,
+        location: action.text
       }
     default:
       return state;

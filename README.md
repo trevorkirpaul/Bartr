@@ -49,6 +49,19 @@ I'm using create-react-app as a boilerplate.
 
 > **It's now a week** into the project and I'm happy with the progress made so far. I gave myself two weeks and I think I might be able to come close. It really depends on how much work I have to put into actually deploying the entire project.
 
+### November 29th
+
+> Yesterday I implented user profile pictures. I also added a default image for items and profiles. Setting this up helped me internalize more about the process involving multer and the http requests. I know I'm not doing it the best way but it works flawlessly.
+
+>Today I implemeneted an item tag system. It was pretty fun and I'm definitely happay with the input field for tags. I set it up so that when ther user hits the space bar the value is added to the state, or array of tags. I also started using Styled Components and most of my day was spent getting rid of the old css method I was previously using.
+
+>I actually really, really like Styled-Components! The dev process is completely different but I think it will tremendously help me think more about creating reusable components. I still haven'y fully realized its potential but it's much easier to work with for now.
+
+>I also added a feature to the user profile page to show each of the items that the logged in user is selling. I moved the remove item action here as well for obvious reasons. I learned a little about the `object-fit` property for images and it'll definitely become a goto tool for me. Before I would set a div's backgorund to an image so I can hande responsive scaling but this is the same feature but with the image element.
+
+> I'm gonna spend the rest of the evening figuring out exactly which features area left to be implemented. I did add more filter parameters to the item search but they need to be fixed. I can only search for seperate params and not all three combined. It shouldn't be too hard to fix. I'm also considering a messaging system which would be pretty easy given what I know now but it will take a lot of time. I also need to figure out how users can buy an item. Maybe I'll just leave it to messaging or add an auction system. I have to lot to think about but I'm also bery happy with the progress today.
+
+
 ### Concerns
 1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~
 2. I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.

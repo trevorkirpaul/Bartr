@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {setTextFilter, setTagFilter} from '../../actions/filters';
+import {setTextFilter, setTagFilter, setLocationFilter} from '../../actions/filters';
 
 // styles
 
@@ -27,44 +27,28 @@ const CheckBoxWrap = styled.div`
   margin 0 auto;
   padding: 5px 15px;
 `;
-const InputCheckBox = styled.input`
-  width: 25px;
-  height: 25px;
-`;
-const CheckBoxLabel = styled.span`
-  color: #F1F5F7;
-  font-family: ('Roboto'), sans-serif;
-`;
+
 
 export class SuperSearch extends Component {
   constructor(props){
     super(props);
     this.state = {
-      searchTitle: true,
-      searchTag: false
+      param: 'title'      
     }
   }
 
   onKeywordChange = (e) => {
-    this.state.searchTitle && this.props.setTextFilter(e.target.value);
-    this.state.searchTag && this.props.setTagFilter(e.target.value);
-    
+    this.state.param === 'title' && this.props.setTextFilter(e.target.value);
+    this.state.param === 'tag' && this.props.setTagFilter(e.target.value);
+    this.state.param === 'location' && this.props.setLocationFilter(e.target.value);    
   }
-  toggleKeyword = (e) => {
-    const checked = e.target.checked;
+  toggleParam = (e) => {
+    const selected = e.target.value;
     this.setState(() => ({
-      searchTitle: checked
-    }));
-    
-
-  }
-  toggleTag = (e) => {
-    const checked = e.target.checked;
-    this.setState(() => ({
-      searchTag: checked
+      param: selected
     }))
-
   }
+ 
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -81,15 +65,13 @@ export class SuperSearch extends Component {
         <FormWrapper>
           <InputKeyword id="inpKeyword"type="text" placeholder="enter a search term" onChange={this.onKeywordChange} />
           <CheckBoxWrap>
-            <InputCheckBox type="checkbox" checked={this.state.searchTitle} onChange={this.toggleKeyword}/>
-            <InputCheckBox type="checkbox" onChange={this.toggleTag}/>
-            <InputCheckBox type="checkbox" />            
+            <select onChange={this.toggleParam}>
+              <option value="title">Title</option>
+              <option value="location">Location</option>
+              <option value="tag">Tag</option>
+            </select>      
           </CheckBoxWrap>
-          <CheckBoxWrap>
-            <CheckBoxLabel>Title</CheckBoxLabel>
-            <CheckBoxLabel>Tag</CheckBoxLabel>
-            <CheckBoxLabel>Location</CheckBoxLabel>
-          </CheckBoxWrap>
+          
 
         </FormWrapper>
 
@@ -103,7 +85,8 @@ export class SuperSearch extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   setTextFilter: (text) => dispatch(setTextFilter(text)),
-  setTagFilter: text => dispatch(setTagFilter(text))
+  setTagFilter: text => dispatch(setTagFilter(text)),
+  setLocationFilter: text => dispatch(setLocationFilter(text))
 });
 
 export default connect(undefined, mapDispatchToProps)(SuperSearch);
