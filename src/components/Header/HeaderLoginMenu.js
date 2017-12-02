@@ -5,9 +5,9 @@ import HeaderAccountMenu from './HeaderAccountMenu';
 export class HeaderLoginMenu extends React.Component {
   render() {
     return (
-      <div>
+      
         <HeaderAccountMenu accountUserName={this.props.accountUserName} accountAvatar={this.props.accountAvatar} />
-      </div>
+      
     );
   }
 }

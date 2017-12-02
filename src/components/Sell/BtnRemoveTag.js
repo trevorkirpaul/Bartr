@@ -5,20 +5,21 @@ import styled from 'styled-components';
 const ButtonRemoveTag = styled.button`
 display: inline-block;
 position: relative;
-border: 1px solid coral;
-border-radius: 15px;
-background: coral;
+border: 1px solid #F1F5F7;
+border-radius: 25px;
+background: #F1F5F7;
 padding: 0;
 margin: 2px;
 margin-left: 4px;
-width: 5px;
-height: 5px;
+width: 20px;
+height: 20px;
 
 `;
 const Xclose = styled.span`
 position: absolute;
-top: 2px;
-left: 3.5px;  
+top: 1px;
+left: 2.5px;
+color: #383838;
 `;
 
 

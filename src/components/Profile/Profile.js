@@ -9,11 +9,8 @@ export class Profile extends React.Component {
     this.props.startRecieveAll();
   }
   render() {
-    return (
-    <div>
-      <ProfileInfo {...this.props.profile}/>
-      
-    </div>
+    return (   
+      <ProfileInfo {...this.props.profile}/>   
     );
   }
 }

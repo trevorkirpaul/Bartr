@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -12,22 +11,29 @@ const urlIMGpub = 'http://localhost:3001/';
 const ViewMoreWrapper = styled.div`
   max-width: 900px;
   margin: 15px auto;
-  display: flex;
-  flex-direction: column;
+
+  
 `;
 
 const TitleDetails = styled.div`
-  background: #383838;
-  font-family: ('Roboto'), sans-serif;
-  color: #F1F5F7;
-  padding: 5px 15px;
-  display: flex;
+  
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
+  
+  
+  @media(max-width: 500px) {
+   flex-direction: column; 
+  }
 `;
 const Title = styled.h1`
   font-weight: 400;
   font-size: 3em;
-  margin: 10px 5px 20px 5px;
+  margin: 0;
+  @media(max-width: 500px) {
+    font-size: 1.5em;
+  }
 `;
+const Location = styled.span``;
 const TitleSeller = styled.h3`
   font-size: 1.5em;
   font-weight: 400;
@@ -36,16 +42,18 @@ const TitleSeller = styled.h3`
 `;
 const TagsList = styled.ul`
   list-style: none;
+  padding: 0;
   margin: 0 0 15px 0;
+  
 `;
 const TagsListItem = styled.li`
-  background: #F1F5F7;
-  color: #383838;
+  background: #383838;
+  color: white;
   border: 1px solid #F1F5F7;
   border-radius: 15px;
   display: inline-block;
   margin: 0 2px;
-  padding: 4px 4px;
+  padding: 5px 7px;
 `;
 
 const ItemDetails = styled.div`
@@ -53,21 +61,19 @@ const ItemDetails = styled.div`
   flex-direction: column;
 `;
 const ItemImage = styled.img`
-  width: 100%;
-  heigth: auto;
+  width: 550px;
+  height: auto;
   
 `;
 const DetailsEnd = styled.div`
   padding: 15px;
-  background: #383838;
-  color:#F1F5F7;
+  
+  color:#383838;
   font-family: ('Roboto'), sans-serif;
   font-size: 1.5em;
   font-weight: 400;
 `;
-const DescriptionLabel = styled.span`
-  font-weight: 700;
-`;
+
 const Details = styled.p`
   margin: 0 0 15px 0;
   `;
@@ -92,6 +98,7 @@ export class BuyViewMore extends React.Component {
       createdBy: '',
       price: '',
       description: '',
+      location: '',
       _id: '',
       tags: []
     }
@@ -103,13 +110,14 @@ export class BuyViewMore extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     axios.post('http://localhost:3001/api/item/'+ id).then(({data}) =>{
-      const {title, imagePath, createdBy, price, description, _id, tags} = data;
+      const {title, imagePath, createdBy, price, description, _id, tags, location} = data;
       this.setState(() => ({
         title,
         imagePath,
         createdBy,
         price,
         description,
+        location,
         _id,
         tags
       }));
@@ -123,8 +131,10 @@ export class BuyViewMore extends React.Component {
       <ViewMoreWrapper>       
         <div className="titleInfo">
           <TitleDetails>
-            <div>
+            
               <Title>{this.state.title}</Title>
+              <Location>({this.state.location})</Location>
+              <TitleSeller>Sold by: {this.state.createdBy} for ${this.state.price}</TitleSeller>            
               <TagsList>
                 {
                   this.state.tags.map((tag) => (
@@ -132,16 +142,15 @@ export class BuyViewMore extends React.Component {
                   ))
                 }
               </TagsList>
-            </div>
-            <TitleSeller>Sold by: {this.state.createdBy} for ${this.state.price}</TitleSeller>            
+            
+            
           </TitleDetails>                  
         </div>
         <ItemDetails>         
-          <ItemImage src={`${urlIMGpub}${this.state.imagePath}`} alt="empty"/>         
+          <ItemImage src={this.state.imagePath && `${urlIMGpub}${this.state.imagePath}`} alt="empty"/>         
           <DetailsEnd>
-            <Details><DescriptionLabel>
-              Description:
-            </DescriptionLabel> {this.state.description}</Details>
+            <Details>
+             {this.state.description}</Details>
             <Button onClick={this.handleGoBack}>back</Button>
           </DetailsEnd>
         </ItemDetails>      

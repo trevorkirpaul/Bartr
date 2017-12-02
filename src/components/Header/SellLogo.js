@@ -1,0 +1,4 @@
+import React from 'react';
+export default () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#F1F5F7" viewBox="0 0 63 63" enableBackground="new 0 0 63 63"><title>pencil</title><desc>Created with Sketch.</desc><path className="st0" d="M59.5 3.1c-3.9-3.9-10.2-3.9-14.1 0l-.4.3-6.2 6.2-34.7 34.7-4 18.2 18.2-4.1 34.6-34.6 6.2-6.2.4-.4c3.9-3.9 3.9-10.2 0-14.1zm-13.8 5.3l8.5 8.5-1.9 1.9-8.5-8.5 1.9-1.9zm-30.2 47.2l-10.5 1.9 2-10.4 34.6-34.6 4.2 4.2-.7-.7-31.1 31.1 1.4 1.4 31.1-31.1 3.5 3.5-34.5 34.7zm32.3-49.3l.7-.7c2.3-2.3 6.2-2.3 8.5 0s2.3 6.1 0 8.5l-.7.7-8.5-8.5z"/></svg>
+);

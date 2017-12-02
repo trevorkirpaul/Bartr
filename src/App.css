@@ -19,8 +19,8 @@ lightBlue: #36C9C6
   HEADER COMPONENT
 */
 
-header {
-  background: #383838;
+/* header {
+  background: red;
   color: #F1F5F7;
   display: flex;
   align-items: center;
@@ -49,10 +49,10 @@ header a {
 
 header div .is-active, nav .is-active {
   color: #36C9C6;  
-}
+} */
 
 /* header account menu */
-.loginInner {
+/* .loginInner {
   text-align: center;
   display: flex;
   align-items: center;
@@ -64,8 +64,7 @@ header div .is-active, nav .is-active {
 }
 .loginInner #headerAvatar {  
   display: inline-block;
-  /* border: 1px solid #F1F5F7; */
-  /* border-radius: 5px; */
+
   height: 25px;
   width: 25px;
   margin: auto;
@@ -76,7 +75,7 @@ header div .is-active, nav .is-active {
 .loginInner #headerAvatar img {
   height: 100%;
   width: 100%;
-}
+} */
 
 
 /* 
@@ -131,7 +130,7 @@ header div .is-active, nav .is-active {
   SELL COMPONENT
 */
 
-.sellWrapper {
+/* .sellWrapper {
   max-width: 900px;
   margin: 0px auto;
   display: flex;
@@ -147,14 +146,14 @@ header div .is-active, nav .is-active {
   font-weight: 700;
   font-size: 3em;
   /* margin: 15px 0; */
-}
 
-.sellWrapper .sellTitle h2 {
+
+/* .sellWrapper .sellTitle h2 {
   font-weight: 300;
   font-size: 1.5em;
   margin: 25px 0;
   /* max-width: 400px; */
-}
+/* }
 
 .sellForm .sellForm__form {
   display: flex;
@@ -162,14 +161,14 @@ header div .is-active, nav .is-active {
   max-width: 900px;
   margin: 0 auto;
   /* background: #8D99AE; */
-}
+/* }
 
 .sellForm .sellForm__form #errorMessage {
   color: #EF233C;
   font-weight: 500;
-}
+}   */
 /* this is a class attached to any blank input on submit */
-.sellForm .sellForm__form div .inputHighlightError {
+/* .sellForm .sellForm__form div .inputHighlightError {
   border-color: #EF233C;
 }
 
@@ -200,13 +199,13 @@ header div .is-active, nav .is-active {
   
   padding: 10px;
   cursor: pointer;
-}
+} */
 
 /* 
   BUY PAGE COMPONENT
 */
 
-.BuyPageTitle {
+/* .BuyPageTitle {
   max-width: 900px;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
@@ -221,7 +220,7 @@ header div .is-active, nav .is-active {
 .BuyPageTitle h2 {
   font-weight: 300;
   font-size: 1.5em;
-}
+} */
 /* BUY LIST GRID */
 .BuyListWrapper {
   max-width: 1000px;

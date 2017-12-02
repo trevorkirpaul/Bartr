@@ -11,21 +11,47 @@ const FormWrapper = styled.div`
   padding: 25px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 600px) {
+    max-width: 100%;
+    text-align: center;
+    padding: 0px;
+  }
 `;
 const InputKeyword = styled.input`
   display: inline-block;
-  height: 45px;
-  width: 50%;
+  background: #383838;
+  /* border-top: 1px solid #383838; */
+  border: none;
+  color: palevioletred;
+  outline: none;
+  height: 30px;
+  width: 100%;
   margin: 0 auto;
-  padding: 5px;
+  padding: 5px;  
 `;
-const CheckBoxWrap = styled.div`
+const SelectWrap = styled.div`  
   background: #383838;
   display: flex;
   justify-content: space-around;
   width: 50%;
-  margin 0 auto;
-  padding: 5px 15px;
+  margin: 0 auto;
+  padding: 0;
+  @media (max-width: 600px) {
+    width: 90%;    
+  }
+`;
+const Select = styled.select`
+  outline: none;
+  width: 100%;
+  margin: 0 auto;
+  border: none; 
+  padding: 10px;
+  background: #383838;
+  color: #F1F5F7;
+  &:hover {
+    cursor: pointer;
+  }
+ 
 `;
 
 
@@ -47,6 +73,7 @@ export class SuperSearch extends Component {
     this.setState(() => ({
       param: selected
     }))
+    document.getElementById('inpKeyword').focus();
   }
  
 
@@ -63,14 +90,19 @@ export class SuperSearch extends Component {
         
 
         <FormWrapper>
-          <InputKeyword id="inpKeyword"type="text" placeholder="enter a search term" onChange={this.onKeywordChange} />
-          <CheckBoxWrap>
-            <select onChange={this.toggleParam}>
-              <option value="title">Title</option>
-              <option value="location">Location</option>
-              <option value="tag">Tag</option>
-            </select>      
-          </CheckBoxWrap>
+
+          <SelectWrap>
+            <InputKeyword id="inpKeyword"type="text" placeholder="enter a search term" onChange={this.onKeywordChange} />
+          </SelectWrap>
+                    
+            <SelectWrap>
+              <Select onChange={this.toggleParam}>
+                <option value="title">Title</option>
+                <option value="location">Location</option>
+                <option value="tag">Tag</option>
+              </Select>   
+            </SelectWrap>   
+          
           
 
         </FormWrapper>

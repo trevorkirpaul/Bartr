@@ -1,6 +1,111 @@
 import React from 'react';
+import styled from 'styled-components';
 import CreateTags from './CreateTags';
 // img preview has styles attached, must be changed when project is converted to styled components
+
+const Wrapper = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  @media(max-width: 500px) {
+    max-width: 100%;
+    
+  }
+`;
+const Form = styled.form`
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+
+`;
+const ErrorMessage = styled.h3`
+  color: #EF233C;
+  font-size: 1em;
+  @media(max-width: 500px) {
+    text-align: center;
+  }
+`;
+const Input = styled.input`
+  display: inline-block;
+  width: 100%;  
+  padding: 5px;
+  margin-bottom: 10px;
+  background: white;
+  border: 1px solid #383838;
+  border-color: ${props => (props.error === 'inputHighlightError') && '#EF233C' };
+  @media(max-width: 500px) {
+   width: 90%;
+   margin: 0 auto 10px auto;
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  resize: none;
+  overflow: scroll;
+  padding: 5px;
+  margin-bottom: 15px;
+  height: 250px;
+  border: 1px solid #383838;
+  border-color: ${props => (props.error === 'inputHighlightError') && '#EF233C' };
+  @media(max-width: 500px) {
+    width: 90%;
+    margin: 0 auto 15px auto;
+  }
+`;
+
+const LowerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  @media(max-width: 500px) {
+    flex-direction: column;
+    margin-bottom: 55px;
+  }
+`;
+const ActionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+const ImageUpload = styled.input`
+  @media(max-width: 500px) {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 0;
+  }
+`;
+const ImagePreviewWrapper = styled.div`
+  width: 300px;
+  height: 300px;
+  background: white;
+  border: 1px solid #383838;
+  @media(max-width: 500px) {
+    width: 90%;
+    height: 150px;
+    margin: 0 auto;
+  }
+`;
+const ImagePreview = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+const Button = styled.button`
+  border: none;
+  background: #383838;
+  color: #F1F5F7;
+  padding: 5px 10px;
+  cursor: pointer;
+  @media(max-width: 500px) {
+    margin: 15px;
+    padding: 5px;
+    width: 90%;
+    
+  }
+`;
+
 export default class SellForm extends React.Component {
   constructor(props) {
     super(props);
@@ -100,66 +205,56 @@ export default class SellForm extends React.Component {
       tags: this.state.tags.filter((tag) => tag !== key)
     }))
   }
-
   render() {
     return (
-      <div className="sellForm__form">
-        <h3 id="errorMessage">{this.state.error}</h3>
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <input
+      <Wrapper>
+        <ErrorMessage id="errorMessage">{this.state.error}</ErrorMessage>
+        <Form onSubmit={this.onSubmit}>          
+            <Input
               autoFocus
               type="text"
               placeholder="Enter Post Title"
               value={this.state.title}
               onChange={this.onTitleChange}
-              className={this.state.errorTitle}
-            />
-          </div>
-          <CreateTags handleTags={this.handleTags} handleRemoveTag={this.handleRemoveTag} tags={this.state.tags} />
-          <div>
-            <input
+              error={this.state.errorTitle}
+            />          
+            <CreateTags handleTags={this.handleTags} handleRemoveTag={this.handleRemoveTag} tags={this.state.tags} />
+             <Input
               type="text"
               placeholder="Enter Selling Price"
               value={this.state.price}
               onChange={this.onPriceChange}
-              className={this.state.errorPrice}
-            />
-          </div>
-          <div>
-            <textarea
+              error={this.state.errorPrice}
+            />          
+            <TextArea
               placeholder="Enter a description of your post/item"
               value={this.state.description}
               onChange={this.onDescriptionChange}
-              className={this.state.errorDes}
+              error={this.state.errorDes}
             >
-            </textarea>
-          </div>
-          <div className="itemImgWrapper">
-            <input
-              type="file"
-              id="itemImage"
-              name="itemImage"
-              accept=".jpg, .jpeg, .png"
-              onChange={this.handleImage}
-            />
-            <div
-              style={{
-                width: '300px',
-                height: '300px',
-                background: 'white',
-                border: '1px solid black'
-              }}
-            >
-              <img id="itemImgPreview" alt="preview" style={{width: '100%', height: 'auto'}}/>
-            </div>
-          </div>
+            </TextArea>
+        
+          <LowerWrapper>           
+            <ActionWrapper>
+              <ImageUpload
+                type="file"
+                id="itemImage"
+                name="itemImage"
+                accept=".jpg, .jpeg, .png"
+                onChange={this.handleImage}
+              />
+            
+              <Button>Create Post!</Button>
+            </ActionWrapper>
+            
+            <ImagePreviewWrapper>
+              <ImagePreview id="itemImgPreview" alt="preview"/>
+            </ImagePreviewWrapper>
+          </LowerWrapper>
                 
-          <div>
-            <button>Create Post!</button>
-          </div>
-        </form>
-      </div>
+         
+        </Form>
+      </Wrapper>
     );
   };
 };
