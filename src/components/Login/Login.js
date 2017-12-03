@@ -1,7 +1,41 @@
 import React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import LoginForm from './LoginForm';
 import { accountLogin} from '../../actions/login';
+
+const Wrapper = styled.div`
+  max-width: 400px;
+  margin: 15px auto;
+  padding: 25px;
+  text-align: center;
+  background: #FFF1AD;
+  border: 1px solid #D1C68E;
+  @media(max-width: 500px) {
+    width: 90%;
+    margin: 15px auto;
+    padding: 5px;
+  }
+`;
+const Title = styled.h1`
+  font-family: 'Roboto', sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+  margin: 10px;
+  color: #383838;
+`;
+const ErrorMsg = styled.span`
+  display: inline-block;
+  border: 1px solid #EF233C;
+  border-radius: 5px;
+  background: #F9AFB8;
+  color: #EF233C;
+  font-family: 'Roboto', sans-serif;
+  padding: 5px 10px;
+  &:before {
+    content: '** ';
+  }
+`;
 
 export class Login extends React.Component {
   constructor(props) {
@@ -11,6 +45,7 @@ export class Login extends React.Component {
     }
   }
   onSubmit = (loginData) => {
+    
     this.props.accountLogin(loginData);    
   }
   componentWillReceiveProps(nextProps) {
@@ -32,15 +67,15 @@ export class Login extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1>Log in:</h1>
+      <Wrapper>
+        <Title>Log in</Title>
         <div>
           {
-            this.state.error && <span>{this.state.error}</span>
+            this.state.error && <ErrorMsg>{this.state.error}</ErrorMsg>
           }
         </div>
         <LoginForm onSubmit={this.onSubmit} />
-      </div>
+      </Wrapper>
     );
   }
 }

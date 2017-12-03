@@ -1,5 +1,55 @@
 import React from 'react';
+import styled from 'styled-components';
 import CreateAvatar from './CreateAvatar';
+
+
+const Wrapper = styled.div`
+  width: 100%;
+  margin-bottom: 80px;
+
+`;
+const InputWrapper = styled.div`
+  background: #C7DBBC;
+  border: 1px solid #91A089;
+  margin: 10px;
+  padding: 10px;
+`;
+const Input = styled.input`
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin: 5px auto;
+  @media(min-width: 500px) {
+    width: 50%;
+  }
+`;
+const ErrorMsg = styled.span`
+  display: block;  
+  margin: 5px 10px;
+  padding: 10px;
+  border: 1px solid #EF233C;
+  background: #F9AFB8;
+  color: #EF233C;
+
+`;
+const ButtonSubmitWrapper = styled.div`
+  background: #D8F7FA;
+  border: 1px solid #9EB4B6;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+`;
+const ButtonSubmit = styled.button`
+  display: inline-block;
+  border: none;
+  background: #383838;
+  color: #F1F5F7;
+  padding: 10px;
+  width: 85%;
+  
+`;
+
 export default class CreateForm extends React.Component {
   constructor(props) {
     super(props);
@@ -129,94 +179,93 @@ export default class CreateForm extends React.Component {
   }
   render() {
     return (
-      <div className="createFormWrapper">
+      <Wrapper>
         { 
-          this.state.error && <div className="formError"><span>{this.state.error}</span></div>
+          this.state.error && <ErrorMsg>{this.state.error}</ErrorMsg>
         }
         <form onSubmit={this.onSubmit}>
-          <div className="input">
-            <input
-              autoFocus
-              type="text"
-              placeholder="first name"
-              value={this.state.firstName}
-              onChange={this.onChangeFirstName}
-              id="inpFirstName"
-            />
-          </div>
-          <div className="input">
-            <input           
-              type="text"
-              placeholder="last name"
-              value={this.state.lastName}
-              onChange={this.onChangeLastName}
-              id="inpLastName"
-            />
-          </div>
-          <div className="input">
-            <input            
-              type="text"
-              placeholder="age"
-              value={this.state.age}
-              onChange={this.onChangeAge}
-              id="inpAge"
-            />
-          </div>
-          <div className="input">
-            <input            
-              type="text"
-              placeholder="location"
-              value={this.state.location}
-              onChange={this.onChangeLocation}
-              id="inpLocation"
-            />
-          </div>
-          <div className="input">
-            <input            
-              type="text"
-              placeholder="email"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
-              id="inpEmail"
-            />
-          </div>
-          <div className="input">
-            <input            
-              type="text"
-              placeholder="enter a username"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-              id="inpUsername"
-            />
-          </div>
-          <div className="input">
-            <input            
-              type="password"
-              placeholder="enter password"
-              value={this.state.password}
-              onChange={this.onChangePassword}
-              id="inpPass"
-            />
-          </div>
-          <div className="input">
-            <input            
-              type="password"
-              placeholder="confirm password"
-              id="inpConfirmPass"
-            />
-          </div>
+          
+            <InputWrapper>
+              <Input
+                autoFocus
+                type="text"
+                placeholder="first name"
+                value={this.state.firstName}
+                onChange={this.onChangeFirstName}
+                id="inpFirstName"
+              />
+            
+              <Input           
+                type="text"
+                placeholder="last name"
+                value={this.state.lastName}
+                onChange={this.onChangeLastName}
+                id="inpLastName"
+              />
+           
+           
+              <Input            
+                type="text"
+                placeholder="age"
+                value={this.state.age}
+                onChange={this.onChangeAge}
+                id="inpAge"
+              />
+    
+              <Input            
+                type="text"
+                placeholder="location"
+                value={this.state.location}
+                onChange={this.onChangeLocation}
+                id="inpLocation"
+              />
+         
+              <Input            
+                type="text"
+                placeholder="email"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+                id="inpEmail"
+              />
+     
+              <Input            
+                type="text"
+                placeholder="enter a username"
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+                id="inpUsername"
+              />
+       
+              <Input            
+                type="password"
+                placeholder="enter password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                id="inpPass"
+              />
+              <Input            
+                type="password"
+                placeholder="confirm password"
+                id="inpConfirmPass"
+              />
+            </InputWrapper>
+        
           {
             this.props.avatarForm && <CreateAvatar onChangeAvatar={this.onChangeAvatar}/>
           }
           
-          
+          { 
+            this.state.error && <ErrorMsg>{this.state.error}</ErrorMsg>
+          }
 
           
-          <div className="formButtonsDiv">
-            <button>{this.props.username ? 'Update Profile':'Create Profile'}</button>
-          </div>
+         
+            <ButtonSubmitWrapper>
+              <ButtonSubmit>{this.props.username ? 'Update Profile':'Create Profile'}</ButtonSubmit>
+            </ButtonSubmitWrapper>
+         
         </form>
-      </div>
+      </Wrapper>
     );
   }
 }

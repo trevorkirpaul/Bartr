@@ -33,14 +33,7 @@ export class EditProfileAvatar extends React.Component {
       <div>
         <Link to="/profile">back...</Link>
         <h1>Edit Avatar</h1>
-        {/* <img
-          src={props.account ? (`${urlIMGavatar}${props.account.avatarPath}`) : ''}
-          alt=""
-          style={{
-            width: '200px',
-            height:'200px'
-          }}
-        /> */}
+        
         <CreateAvatar onChangeAvatar={this.onChangeAvatar}/>
         <button
           onClick={this.submitAvatar}

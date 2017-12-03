@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {startRemoveItem} from '../../actions/items'
+import {startRemoveItem} from '../../actions/items';
+import {URLimageItem} from '../../serverLocation';
 
-const urlIMGpub = 'http://localhost:3001/';
 
 const Item = styled.li`  
   background: #383838;
@@ -16,7 +16,7 @@ const Item = styled.li`
 `;
 const ItemDetails = styled.div`
   flex: 1 50%;
-  padding: 5px;
+  padding: 15px;
   font-family: ('Roboto'), sans-serif;
   color: #F1F5F7;
   display: flex;
@@ -25,6 +25,7 @@ const ItemDetails = styled.div`
 `;
 const H3 = styled.h3`
   margin: 0;
+  
 `;
 // const P = styled.p`
 //   margin: 0;
@@ -37,41 +38,47 @@ const Image = styled.img`
   width: 100%;
   object-fit: cover;
 `;
-const ViewButton = styled(Link)`
-  text-decoration: none;
-  color: #383838;
+
+const Button = styled.button`
+  border: none;
   background: #F1F5F7;
-  padding: 2px 5px;
+  color: #383838;
+  padding: 5px;
 `;
-const RemoveButton = styled.button`
+const LinkButton = styled(Link)`
   border: none;
   background: #F1F5F7;
   padding: 5px;
+  color: #383838;
+  text-decoration: none;
 `;
+
 export class ProfileItem extends React.Component {
   
   handleRemove = () => {
     this.props.startRemoveItem(this.props._id);
+    // console.log(this.props._id);
   }
+  
   render(){
     return(
   <Item>
     <ItemDetails>
-      <H3>Title: {this.props.title}</H3>
+      <H3>{this.props.title}</H3>
       
       <div>
-        <ViewButton to={`/buy/item/${this.props._id}`} >View</ViewButton>
+        <LinkButton to={`/buy/item/${this.props._id}`}>View</LinkButton>
       </div>
 
       <div>        
-        <RemoveButton onClick={this.handleRemove}>
-          Remove...
-        </RemoveButton>
+        <Button onClick={this.handleRemove}>
+          Remove
+        </Button>
       </div>
 
     </ItemDetails>
     <ItemImage>
-      <Image src={`${urlIMGpub}${this.props.imagePath}`} alt="item preview"/>
+      <Image src={`${URLimageItem}${this.props.imagePath}`} alt="item preview"/>
     </ItemImage>    
   </Item>
     )

@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {setLogOut} from '../../actions/login';
+import {URLimage} from '../../serverLocation';
 
-const urlIMGavatar = 'http://localhost:3001/avatar/';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ export const HeaderAccountMenu = (props) => (
       <Wrapper>
         <IMGwrapper>
           {props.accountUserName &&
-              <IMG src={`${urlIMGavatar}${props.accountAvatar}`} alt=""/>
+              <IMG src={`${URLimage}${props.accountAvatar}`} alt=""/>
             }
         </IMGwrapper>
         {!props.accountUserName ? <StyledLink to="/login">Login</StyledLink> : <StyledLink to="/profile">{props.accountUserName}</StyledLink>}

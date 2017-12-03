@@ -1,14 +1,16 @@
 import axios from 'axios';
+import { APIallItems, APIitemImg } from '../serverLocation';
+
 
 export const startAddItem = (itemData ={}, image) => {
   // set up form data for img upload
   const formData = new FormData();
   formData.append('image', image);
 
-  const urlAPI = 'http://localhost:3001/api/items';
-  const imgAPI = 'http://localhost:3001/api/items/img';
+  // const urlAPI = 'http://localhost:3001/api/items';
+  // const imgAPI = 'http://localhost:3001/api/items/img';
   // const addItem = axios.post(urlAPI, itemData);
-  const addImage = axios.post(imgAPI, formData);
+  const addImage = axios.post(APIitemImg, formData);
 
   return (dispatch) => {
     addImage.then(({data}) => {
@@ -17,7 +19,7 @@ export const startAddItem = (itemData ={}, image) => {
         ...itemData,
         imagePath
       };
-      axios.post(urlAPI, obj).then(({data}) => {
+      axios.post(APIallItems, obj).then(({data}) => {
         dispatch({
           type: 'ADD_ITEM',
           item: data
@@ -28,7 +30,7 @@ export const startAddItem = (itemData ={}, image) => {
 }
 
 export const startRemoveItem = (itemId) => {
-  const urlAPI = 'http://localhost:3001/api/items/' + itemId;
+  const urlAPI = `${APIallItems}/${itemId}`;
   const deleteItem = axios.delete(urlAPI, itemId);
   return(dispatch) => {
     deleteItem.then(({data}) => {
@@ -41,8 +43,8 @@ export const startRemoveItem = (itemId) => {
 }
 
 export const startRecieveAll = () => {
-  const urlAPI = 'http://localhost:3001/api/items';
-  const requestAllItems = axios.get(urlAPI);
+  // const urlAPI = 'http://localhost:3001/api/items';
+  const requestAllItems = axios.get(APIallItems);
   // bc of redux-thunk, we are returning a dispatch fxn
   return (dispatch) => {
     requestAllItems.then(({data}) => {

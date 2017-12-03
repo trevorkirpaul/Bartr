@@ -11,7 +11,7 @@ const HeaderWrap = styled.header`
   color: #F1F5F7;
   display: flex;
   align-items: center;
-  font-family: ('Roboto'), sans-serif;
+  font-family: 'Roboto', sans-serif;
   justify-content: space-between;
   padding: 15px;
   @media (max-width: 500px) {
@@ -33,6 +33,7 @@ const Logo = styled.span`
 `;
 
 const Nav = styled.nav`
+  align-self: center;
   @media(max-width: 500px) {
     position: fixed;
     height: 35px;
@@ -94,7 +95,7 @@ export default class Header extends React.Component {
         <LogoWrap>
         <Logo>+ bartr</Logo>
         </LogoWrap>
-        <img src="" alt=""/>
+        
         <Nav>
           <StyledLink to="/" activeClassName="is-active" exact={true}>
             {(this.state.width >= 500) ? 'Home' : <HomeLogo/> }

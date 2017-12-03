@@ -5,6 +5,10 @@ import { startRecieveAll } from '../../actions/items';
 import SuperSearch from '../SuperSearch/SuperSearch';
 import BuyList from './BuyList';
 
+const Wrapper = styled.div`
+  margin-bottom: 50px;
+`;
+
 const Title = styled.div`
   max-width: 900px;
   margin: 0 auto;
@@ -42,14 +46,14 @@ export class Buy extends React.Component {
   }
   render() {
     return (
-      <div>
+      <Wrapper>
         <Title>
           <H1>For Sale</H1>
           <H2>Use the SuperSearch to refine your results from our entire databse of items for sale</H2>
         </Title>
         <SuperSearch />    
         <BuyList />
-      </div>
+      </Wrapper>
     );
   }
 }

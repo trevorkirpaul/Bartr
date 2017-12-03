@@ -7,6 +7,11 @@ const ItemsList = styled.ul`
   list-style: none;
   padding: 15px;
   margin-bottom: 50px;
+  background: #D8F7FA;
+  border: 1px solid #9EB4B6;
+  @media(max-width: 500px) {
+    margin: 10px 10px 50px 10px;
+  }
 `;
 const Title = styled.h2`
   font-family: 'Roboto', sans-serif;
@@ -14,6 +19,7 @@ const Title = styled.h2`
   font-size: 1.5em;
   color: #383838;
   text-align: center;
+  margin: 15px 0;
 `;
 
 

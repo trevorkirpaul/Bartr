@@ -2,74 +2,114 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import ProfileItems from './ProfileItems';
-const urlIMGavatar = 'http://localhost:3001/avatar/';
+import {URLimage} from '../../serverLocation';
 
-const Wrapper = styled.div``;
-const Heading = styled.h2`
+const Wrapper = styled.div`
+  max-width: 900px;
+  margin: 15px auto;
+  
+
+`;
+const TitleWrapper = styled.div`
+  text-align: center;
+  @media(min-width: 500px) {
+    text-align: left;
+  }
+`;
+const Title = styled.h1`
+  display: inline-block;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.5em;
-  font-weight: 400;
   color: #383838;
+  font-weight: 400;
   text-align: center;
+  margin: 10px auto;
+  @media(min-width: 500px) {
+    font-size: 3em;
+    margin: 15px;
+    
+    font-weight: 700;
+  }
 `;
-const GreetPanel = styled.div`
+const TopPanel = styled.div`
+  background: #D8F7FA;
+  border: 1px solid #9EB4B6;
   text-align: center;
-  margin-bottom: 55px;
-`;
-const Avatar = styled.img` 
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-`;
-const ButtonLink = styled(Link)`
-  padding: 3px 5px;
-  text-decoration: none;
-  background: #383838;
-  color: #F1F5F7;
-  font-family: 'Roboto', sans-serif;
-`;
+  margin: 10px;
 
-const SettingsPane = styled.div`
+`;
+const Username = styled.h2`
   font-family: 'Roboto', sans-serif;
   color: #383838;
   margin: 10px;
-  background: white;
+  font-weight: 400;
+`;
+const AvatarWrapper = styled.div`
+  padding: 0px;
+  border: 1px solid #9EB4B6;
+  margin: 10px auto;
+  
+  width: 100px;
+  height: 100px;
+
+  overflow: hidden;
+`;
+const Avatar = styled.img`
+  height: auto;
+  width: 100%;
+`;
+
+const Button = styled(Link)`
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  background: #383838;
+  color: #F1F5F7;
   padding: 10px;
+  text-decoration: none;
 `;
-const SettingsHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
+const InfoPanel = styled.div`
+  background: #FFF1AD;
+  border: 1px solid #D1C68E;
+  margin: 10px;
+  padding: 10px;
+  @media(min-width: 500px) {
+    text-align: center;
+  }
 `;
-const SettingsTitle = styled.h3`
-  margin: 0;
+
+const Detail = styled.span`
+  display: block;
+  margin: 10px 0;
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
 `;
 
 export default ({ username, email, age, location, firstName, lastName, _id, password, avatarPath }, props) => (
   <Wrapper>
-    <Heading>Dashboard</Heading>
+    <TitleWrapper>
+      <Title>Dashboard</Title>
+    </TitleWrapper>
+    <TopPanel>
+      <Username>
+        {username}
+      </Username>
+      <AvatarWrapper>
+        <Avatar src={avatarPath && `${URLimage}${avatarPath}`}/>
+      </AvatarWrapper>
+      <Button to="/editAccount/avatar">Change Avatar</Button>
+    </TopPanel>
+    <InfoPanel>
+      <Detail>First Name: {firstName}</Detail>
+      <Detail>Last Name: {lastName}</Detail>
+      <Detail>Age: {age}</Detail>
+      <Detail>Location: {location}</Detail>
+      <Detail>E-mail: {email}</Detail>
+      <Button to="/editAccount">Edit Profile</Button>
+    </InfoPanel>
+    <ProfileItems username={username}/>
 
-    <GreetPanel>
-        <Avatar
-          src={avatarPath && `${urlIMGavatar}${avatarPath}`}
-          alt="avatar"
-        />
-      <Heading>{username}</Heading>
-      <ButtonLink to="/editAccount/avatar">upload new avatar</ButtonLink>
-    </GreetPanel>
-
-    <SettingsPane>
-     <SettingsHeader>
-       <SettingsTitle>Profile</SettingsTitle>
-       <div>
-         <ButtonLink to="/editAccount">edit</ButtonLink>
-       </div>
-     </SettingsHeader>
-     <p><span className="fieldLabel">username:</span> {username}</p>
-     <p><span className="fieldLabel">age:</span> {age}</p>
-     <p><span className="fieldLabel">email:</span> {email}</p>
-     <p><span className="fieldLabel">location:</span> {location}</p>
-
-    </SettingsPane>
-    <ProfileItems username={username} />
+    {/* <ProfileItems username={username} /> */}
   </Wrapper>
 );
