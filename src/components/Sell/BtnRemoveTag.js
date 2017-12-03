@@ -5,14 +5,18 @@ import styled from 'styled-components';
 const ButtonRemoveTag = styled.button`
 display: inline-block;
 position: relative;
-border: 1px solid #F1F5F7;
+border: 1px solid #FFF1AD;
 border-radius: 25px;
-background: #F1F5F7;
+background: #FFF1AD;
 padding: 0;
 margin: 2px;
 margin-left: 4px;
 width: 20px;
 height: 20px;
+&:hover {
+  cursor: pointer;
+}
+
 
 `;
 const Xclose = styled.span`

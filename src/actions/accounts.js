@@ -11,9 +11,7 @@ export const startCreateAccount = (accountData = {}, avatar) => {
   formData.append('avatar', avatar);
 
 
-  // const urlAPI = 'http://localhost:3001/api/accountCreate';
-  // const avatarAPI = 'http://localhost:3001/api/accountCreate/avatar';
-  // const createAccount = axios.post(urlAPI, accountData);
+  
   const createAvatar = axios.post(avatarCreateAPI, formData);
  
   return (dispatch) => {

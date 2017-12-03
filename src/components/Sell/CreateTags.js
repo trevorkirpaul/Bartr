@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import BtnRemoveTag from './BtnRemoveTag';
 
-
+const Wrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+`;
 const Input = styled.input`
   display: inline-block;
   width: 100%;  
@@ -12,40 +17,49 @@ const Input = styled.input`
   border: 1px solid #383838;
   @media(max-width: 500px) {
     width: 90%;
+    margin: 0 auto 10px auto;
+    
   }
 `;
 
 const TagHolder = styled.div`
   width: 100%;
-  background: #8D99AE;
+  background: #FFF1AD;
+  border: 1px solid #D1C68E;
   color: white;
   padding: 5px;
   margin-bottom: 10px;
   @media(max-width: 500px) {
     width: 90%;
-    padding: 2px;
+    padding: 5px;
+    text-align: center;
+    margin: 0 auto 10px auto;
   }
 `;
 const UlTagList = styled.ul`
   list-style: none;
   display: flex;
   @media(max-width: 500px) {
-    flex-direction: column;
-    width: 50%;
+    display: block;
     
   } 
 `;
 const LiTagList = styled.li`
   
-  background: #383838;
-  border: 1px solid #383838;
+  background: #D1C68E;
+  border: 1px solid #D1C68E;
   border-radius: 25px;
-  color: #F1F5F7;
+  color: #383838;
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 5px 10px;
   margin: 0 5px;
+  @media(max-width: 500px) {
+    margin: 5px 0;
+    justify-content: space-between;
+    border-radius: 0;
+  }
 `; 
 
 
@@ -54,7 +68,7 @@ const LiTagList = styled.li`
 export default (props) => {
   
   return (
-    <div>
+    <Wrapper>
       
       <Input type="text" id='inpTagsForm' placeholder="Enter Tags" onKeyDown={props.handleTags}/>
       <TagHolder>
@@ -73,6 +87,6 @@ export default (props) => {
         </UlTagList>
 
       </TagHolder>
-    </div>
+    </Wrapper>
   )
 }

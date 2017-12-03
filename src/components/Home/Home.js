@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 const Wrapper = styled.div`
   margin: 10px auto;
+  margin-bottom: 50px;
   max-width: 900px;
   @media(max-width: 500px) {
     width: 90%;

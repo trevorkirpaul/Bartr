@@ -81,7 +81,8 @@ app.post('/api/items', (req, res) => {
   item.createdBy = req.body.createdBy;
   item.tags = req.body.tags;
   item.imagePath = req.body.imagePath; 
-  item.location = req.body.location;  
+  item.location = req.body.location;
+  item.email = req.body.email; 
   // save to db
   item.save((err, item) => {
     if (err)
@@ -180,7 +181,8 @@ app.post('/api/accountCreate', (req, res) => {
       email,
       age,
       location,
-      avatarPath
+      avatarPath,
+      _id: account.id
     });
   });
 });

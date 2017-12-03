@@ -8,6 +8,7 @@ const ItemSchema = new Schema({
   createdBy: String,
   location: String,
   imagePath: String,
+  email: String,
   tags: []
 });
 

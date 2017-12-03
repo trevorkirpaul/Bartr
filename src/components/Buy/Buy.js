@@ -11,12 +11,17 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   max-width: 900px;
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 25px;
   font-family: 'Roboto', sans-serif;
   color: #383838;
+  background: #D8F7FA;
+  border: 1px solid #9EB4B6;
   @media (max-width: 600px) {
     max-width: 100%;
     text-align: center;
+    margin: 10px;
+    padding: 10px;
   }
 `;
 
@@ -24,8 +29,7 @@ const H1 = styled.h1`
   font-weight: 700;
   font-size: 3em;
   color: #383838;
-
-  /* phone */
+  margin: 10px 0;
   @media (max-width: 600px) {
     margin: 15px;
   }

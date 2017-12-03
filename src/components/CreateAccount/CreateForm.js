@@ -169,6 +169,7 @@ export default class CreateForm extends React.Component {
         this.setState(() => ({
           error: '** Please complete all fields!'
         }))
+        
       } else if (formPasswordMatch === false) {
         this.setState(() => ({
           error: '** Your passwords do not match!'

@@ -5,13 +5,13 @@ import configureStore from './store/configureStore';
 import './App.css';
 
 // for styling user profile
-import {accountLogin} from './actions/login';
+// import {accountLogin} from './actions/login';
 
 
 
 const store = configureStore();
 
-store.dispatch(accountLogin({username: 'charmander', password: 'poke'}));
+// store.dispatch(accountLogin({username: 'charmander', password: 'poke'}));
 
 
 export default class App extends Component {

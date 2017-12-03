@@ -1,29 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 import CreateTags from './CreateTags';
-// img preview has styles attached, must be changed when project is converted to styled components
+
 
 const Wrapper = styled.div`
-  max-width: 900px;
+  
+`;
+const Form = styled.form`
+  
+  background: #C7DBBC;
+  border: 1px solid #91A089;
+  padding: 25px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   @media(max-width: 500px) {
     max-width: 100%;
-    
+    margin: 10px;
+    padding: 5px;
   }
-`;
-const Form = styled.form`
-  margin: 0 auto;
-  padding: 0;
-  width: 90%;
 
 `;
 const ErrorMessage = styled.h3`
+  background: #F9AFB8;
+  border: 1px solid #EF233C;
   color: #EF233C;
+  padding: 10px 25px;
+  margin-bottom: 15px;
   font-size: 1em;
   @media(max-width: 500px) {
     text-align: center;
+    margin: 10px;
   }
 `;
 const Input = styled.input`
@@ -158,7 +165,7 @@ export default class SellForm extends React.Component {
       !this.state.title ? applyTitleBorder('inputHighlightError') : applyTitleBorder('');
       !this.state.description ? applyDesBorder('inputHighlightError') : applyDesBorder('');
       !this.state.price ? applyPriceBorder('inputHighlightError') : applyPriceBorder('');
-      
+      window.scrollTo(0,0);
     } else {
       this.setState(() => ({error: ''}));
       this.props.onSubmit({
@@ -208,7 +215,9 @@ export default class SellForm extends React.Component {
   render() {
     return (
       <Wrapper>
-        <ErrorMessage id="errorMessage">{this.state.error}</ErrorMessage>
+        {
+          this.state.error && <ErrorMessage id="errorMessage">{this.state.error}</ErrorMessage>
+        }
         <Form onSubmit={this.onSubmit}>          
             <Input
               autoFocus

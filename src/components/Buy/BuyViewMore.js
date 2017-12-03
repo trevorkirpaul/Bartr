@@ -128,17 +128,20 @@ const Details = styled.p`
   line-height: 30px;
   `;
 const Button = styled.button`
+  display: block;
   border: none;
   background: #383838;
   color: #F1F5F7;
   padding: 10px 15px;
   font-family: ('Roboto'), sans-serif;
+  margin-bottom: 10px;
   &:hover {
     cursor: pointer;
   }
-  
 `;
-
+const A = styled.a`
+  text-decoration: none;
+`;
 
 export class BuyViewMore extends React.Component {
   constructor(props) {
@@ -150,6 +153,7 @@ export class BuyViewMore extends React.Component {
       price: '',
       description: '',
       location: '',
+      email: '',
       _id: '',
       tags: []
     }
@@ -161,7 +165,7 @@ export class BuyViewMore extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     axios.post(`${APIitem}` + id).then(({data}) =>{
-      const {title, imagePath, createdBy, price, description, _id, tags, location} = data;
+      const {title, imagePath, createdBy, price, description, _id, tags, location, email} = data;
       this.setState(() => ({
         title,
         imagePath,
@@ -170,7 +174,8 @@ export class BuyViewMore extends React.Component {
         description,
         location,
         _id,
-        tags
+        tags,
+        email
       }));
     }); 
     
@@ -207,6 +212,7 @@ export class BuyViewMore extends React.Component {
               <Details>
               {this.state.description}</Details>
               <Button onClick={this.handleGoBack}>back</Button>
+              <A href={`mailto:${this.state.email}`}><Button>contact seller via e-mail</Button></A>
             </DetailsWrapper>
           </DetailsEnd>
             

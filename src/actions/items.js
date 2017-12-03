@@ -7,9 +7,7 @@ export const startAddItem = (itemData ={}, image) => {
   const formData = new FormData();
   formData.append('image', image);
 
-  // const urlAPI = 'http://localhost:3001/api/items';
-  // const imgAPI = 'http://localhost:3001/api/items/img';
-  // const addItem = axios.post(urlAPI, itemData);
+  
   const addImage = axios.post(APIitemImg, formData);
 
   return (dispatch) => {

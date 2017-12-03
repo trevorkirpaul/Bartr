@@ -21,6 +21,7 @@ export const APIlogin = `${ip}:3001/api/login`;
 // accounts actions
   // create
   export const accountCreateAPI = `${ip}:3001/api/accountCreate`;
+  export const getAccountInfoAfterCreate = `${ip}:3001/api/account`;
   // createAvatar
   export const avatarCreateAPI = `${ip}:3001/api/accountCreate/avatar`;
   
