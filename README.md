@@ -61,12 +61,17 @@ I'm using create-react-app as a boilerplate.
 
 > I'm gonna spend the rest of the evening figuring out exactly which features area left to be implemented. I did add more filter parameters to the item search but they need to be fixed. I can only search for seperate params and not all three combined. It shouldn't be too hard to fix. I'm also considering a messaging system which would be pretty easy given what I know now but it will take a lot of time. I also need to figure out how users can buy an item. Maybe I'll just leave it to messaging or add an auction system. I have to lot to think about but I'm also bery happy with the progress today.
 
+### December 2, 2017
+
+> I've basically completed all the styling included mobile styles. I had a rough last couple days getting all the styling sorted out. I got rid of the app.css file and used styled-components for every style with the exception of css reset on app.js. I also moved all the url's for the API calls to an external file to make changing the enviornment ip easier. When I deploy I'll be able to change all the url's with one variable change. I also put a nice message and warning about this being a project on the home page.
+
+> There are no features left to implement and tomorrow I will make a final pass on the components and file structure and clean everything up. I'll also test deploy to my server afterwards. I may refactor some components which means I might still have some heavy lifting to do. 
 
 ### Concerns
 1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~
-2. I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.
+2. ~~I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.~~ `I ended up using styled-components.`
 3. Things will get interesting once I get to a point where I want to set up mongodb. ~~I have minimal experience with firebase so I have a nice foundation of understanding for promises. I've never hooked mongodb up to a project but I've had it set up and working on my computer sicne the beginning. That doesn't help much but I understand a little bit about it and I know it's the direction I want to go. If any serious issues arise I'll just use firebase.~~ `update: I hooked up mongoDB using a seperate express server just for API calls. :)`
-4. Image uploads will most likely be the most challenging aspect. I think I have to use multer to upload the image to a folder in the project/server(when deployed) whiles saving the uploaded img file location as a property on the items db. Then I can easily render the image by calling that property for each item. All of this seems easy except for the uploading aspect. After I spend some time learning how multer works I'll have a better grasp on this task. 
+4. ~~Image uploads will most likely be the most challenging aspect. I think I have to use multer to upload the image to a folder in the project/server(when deployed) whiles saving the uploaded img file location as a property on the items db. Then I can easily render the image by calling that property for each item. All of this seems easy except for the uploading aspect. After I spend some time learning how multer works I'll have a better grasp on this task.~~ `I completed this task a while ago, after restructuring my express server file. I did end up using multer and users can upload a picture for the item they're selling as well as profile pictures.`
 
 ## ^-^
 
