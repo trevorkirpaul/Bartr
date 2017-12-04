@@ -1,4 +1,5 @@
-const ip = `165.227.111.10`;
+const ip = `http://165.227.111.10`;
+// const ip = 'http://localhost';
 // const locadlHost = `http://ip`;
 
 
