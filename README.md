@@ -67,6 +67,14 @@ I'm using create-react-app as a boilerplate.
 
 > There are no features left to implement and tomorrow I will make a final pass on the components and file structure and clean everything up. I'll also test deploy to my server afterwards. I may refactor some components which means I might still have some heavy lifting to do. 
 
+### Dec 5, 2017
+
+> I'm gonna officially end development on this project. I deployed the react client to heroku and the api to my vps and it all functions correctly. It took a lot of time to get this all setup for a few reasons. I decided to redo how my portfolio site works by using nginx to act as the frontline server. I had to learn how to set it up and it was definitely tricky understanding how location blocks work. I fortunately got it working and I have it set up to auto renew an SSL cert, so now my portfolio is HTTPS!
+
+>I technically didn't have to use nginx but I noticed some console warnings after deploying the client to heroku mentioning unsecure content. So now evertything is served through HTTPS using nginx as a reverse proxy for my api node server.
+
+> This entire project was a huge learning experience. The biggest things I have learned are dealing with http methods and the express backend. Setting up Nginx has given me a glimpse into another layer of the process and I am definitely intrigued. I am reluctantly declaring this project done (for now) since there are some UX elements I should really address. For example, after a user adds an item, I should have loaded a component that verified it was uploaded. The same should be applied to verifying loggin or or creating a user. I'm going to revisit this app after a bit so I can apply new knowledge to it before finalizing my portfolio overall.
+
 ### Concerns
 1. ~~My project structure is going to be pretty terrible. I feel boxed in from using create-react-app but I still have a components folder. This leads to another big issue...~~
 2. ~~I'm using CSS. I really want to use SASS and later on down the road I'll probably have to sort it out. Right now I'm not doing much styling so it's not a big issue.~~ `I ended up using styled-components.`
