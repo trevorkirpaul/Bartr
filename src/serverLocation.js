@@ -1,5 +1,6 @@
-const ipUnsecure = `http://165.227.111.10`;
-
+// use this for images
+// const ipUnsecure = `http://165.227.111.10`;
+const ipIMG = 'https://trevorkirpaul.com/images';
 // use this for https
 const ip = 'https://trevorkirpaul.com';
 
@@ -7,8 +8,8 @@ const ip = 'https://trevorkirpaul.com';
 // const locadlHost = `http://ip`;
 
 
-export const URLimage = `${ipUnsecure}/avatar/`;
-export const URLimageItem = `${ipUnsecure}/`;
+export const URLimage = `${ipIMG}/avatar/`;
+export const URLimageItem = `${ipIMG}/`;
 export const APIitem = `${ip}/api/item/`;
 
 
